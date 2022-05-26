@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 
-const index = () => {
+const Dashboard = () => {
   return <Box as="section" />;
 };
 
-export default index;
+export default Dashboard;

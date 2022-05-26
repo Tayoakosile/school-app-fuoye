@@ -1,0 +1,22 @@
+import type { StudentLevelOptionsProp } from "../types/types";
+
+export const StudentLevelOptions: StudentLevelOptionsProp[] = [
+  { value: "100", label: "100" },
+  { value: "200", label: "200" },
+];
+
+export const StudentFalcultyOptions: StudentLevelOptionsProp[] = [
+  { value: "Social Sci", label: "Social Science" },
+  { value: "Science", label: "Science" },
+  { value: "Others", label: "Others" },
+];
+
+export const StudentDepartmentOptions: StudentLevelOptionsProp[] = [
+  { value: "Political Science", label: "Political Science" },
+  { value: "Sociology", label: "Sociology" },
+  { value: "Criminology", label: "Criminology" },
+  { value: "Economics", label: "Economics" },
+  { value: "Mass Communication", label: "Mass Communication" },
+  { value: "Others", label: "Others" },
+  { value: "Science", label: "Science" },
+];

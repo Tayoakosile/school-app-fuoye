@@ -1,3 +1,7 @@
-import Page404 from "lib/pages/404";
+import { Box } from "@chakra-ui/react";
 
-export default Page404;
+const PageNotFound = () => {
+  return <Box as="section" />;
+};
+
+export default PageNotFound;
