@@ -1,24 +1,59 @@
-import { Box } from "@chakra-ui/react";
+import { Box, HStack } from '@chakra-ui/react';
+import { DesktopMenu, MobileMenu } from 'lib/components/Menu/Menu';
 import type { ReactNode } from "react";
 
-import Footer from "./Footer";
+import usePageResponsive from '../../hooks/usePageResponsive';
 import Header from "./Header";
+
 
 type LayoutProps = {
   children: ReactNode;
 };
 
-const Layout = ({ children }: LayoutProps) => {
-  return (
+const MobileLayout = ({ children }: { children: ReactNode }) => {
+  return <>
     <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
-      <Box margin="8">
+      <Box my="8" px='2'>
         <Header />
         <Box as="main" marginY={22}>
           {children}
         </Box>
-        <Footer />
+        <MobileMenu />
       </Box>
     </Box>
+
+  </>
+}
+
+const DesktopLayout = ({ children }: { children: ReactNode }) => {
+  return <>
+    <Box margin="0 auto" w='100%' transition="0.5s ease-out">
+      <HStack w='full' h='100vh' overflowY={'auto'}>
+        <DesktopMenu />
+        <Box as="main" flex='0.8' px='4'>
+          {children}
+        </Box>
+      </HStack>
+    </Box>
+
+  </>
+}
+const Layout = ({ children }: LayoutProps) => {
+  const { isPageTabletSize } = usePageResponsive()
+
+  return (
+    <>
+      {isPageTabletSize
+        ?
+        <DesktopLayout> {children}</DesktopLayout>
+        :
+        <MobileLayout>
+          {children}
+        </MobileLayout>
+
+      }
+    </>
+
   );
 };
 

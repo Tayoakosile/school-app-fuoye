@@ -8,6 +8,7 @@ import defaultSEOConfig from "../../next-seo.config";
 import Layout from "lib/layout";
 import customTheme from "lib/styles/customTheme";
 import "lib/styles/globals.css";
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
