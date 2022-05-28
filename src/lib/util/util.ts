@@ -1,4 +1,4 @@
-import type { StudentLevelOptionsProp } from "../types/types";
+import { ClassStatus, StudentLevelOptionsProp } from "../types/types";
 
 export const StudentLevelOptions: StudentLevelOptionsProp[] = [
   { value: "100", label: "100" },
@@ -19,4 +19,88 @@ export const StudentDepartmentOptions: StudentLevelOptionsProp[] = [
   { value: "Mass Communication", label: "Mass Communication" },
   { value: "Others", label: "Others" },
   { value: "Science", label: "Science" },
+];
+
+export const imageArrayProps = [
+  {
+    courseCode: "POL 106",
+    status: ClassStatus.Started,
+    courseTitle: "Introduction to Political Science",
+    time: "Now: 01:00pm, 10th Friday",
+    author: "Gabby",
+    image: "school-image-2.jpeg",
+  },
+  {
+    courseCode: "POL 106",
+    status: ClassStatus.Started,
+    courseTitle: "Introduction to Political Science",
+    time: "Now: 01:00pm, 10th Friday",
+    author: "Gabby",
+    image: "school-image.jpeg",
+  },
+  {
+    courseCode: "POL 106",
+    status: ClassStatus.Ongoing,
+    courseTitle: "Introduction to Political Science",
+    time: "Now: 01:00pm, 10th Friday",
+    author: "Gabby",
+    image: "school-image-3.jpeg",
+  },
+  {
+    courseCode: "POL 106",
+    status: ClassStatus.Ongoing,
+    courseTitle: "Introduction to Political Science",
+    time: "Now: 01:00pm, 10th Friday",
+    author: "Gabby",
+    image: "school-image.jpeg",
+  },
+  {
+    courseCode: "POL 106",
+    status: ClassStatus.Ongoing,
+    courseTitle: "Introduction to Political Science",
+    time: "Now: 01:00pm, 10th Friday",
+    author: "Gabby",
+    image: "school-image-2.jpeg",
+  },
+  {
+    courseCode: "POL 106",
+    status: ClassStatus.Ongoing,
+    courseTitle: "Introduction to Political Science",
+    time: "Now: 01:00pm, 10th Friday",
+    author: "Gabby",
+    image: "school-image.jpeg",
+  },
+  {
+    courseCode: "POL 106",
+    status: ClassStatus.Ended,
+    courseTitle: "Introduction to Political Science",
+    time: "Now: 01:00pm, 10th Friday",
+    author: "Gabby",
+    image: "school-image-3.jpeg",
+  },
+  {
+    courseCode: "POL 106",
+    status: ClassStatus.Ongoing,
+    courseTitle: "Introduction to Political Science",
+    time: "Now: 01:00pm, 10th Friday",
+    author: "Gabby",
+    image: "school-image-3.jpeg",
+  },
+];
+export const responsive = {
+  0: {
+    items: 1,
+  },
+  1000: {
+    items: 3,
+  },
+};
+
+export const fileCategory = [
+  { courseFileName: "Pol 102", numberOfFiles: "100" },
+  { courseFileName: "Pol 104", numberOfFiles: "200" },
+  { courseFileName: "GST 106", numberOfFiles: "300" },
+  { courseFileName: "SOC 104", numberOfFiles: "400" },
+  { courseFileName: "SOC 102", numberOfFiles: "500" },
+  { courseFileName: "SOC 102", numberOfFiles: "600" },
 ];

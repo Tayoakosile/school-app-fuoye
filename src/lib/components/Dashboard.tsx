@@ -4,7 +4,7 @@ import LatestAnnouncement from './LatestAnnoucement';
 
 
 const Dashboard = () => {
-    return <Box as="section" overflowX={'hidden'} alignSelf='flex-start' mt={{base:'0',lg:'96'}} w='full'>
+    return <Box as="section" overflowX={'hidden'} alignSelf='flex-start' mt={{base:'0',lg:'32rem'}} w='full'>
         <LatestAnnouncement />
 
         <LatestUploads />

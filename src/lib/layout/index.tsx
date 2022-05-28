@@ -1,8 +1,10 @@
 import { Box, HStack } from '@chakra-ui/react';
+import usePageResponsive from 'hooks/usePageResponsive';
 import { DesktopMenu, MobileMenu } from 'lib/components/Menu/Menu';
+// import { DesktopMenu, MobileMenu } from 'lib/components/Menu/Menu';
 import type { ReactNode } from "react";
 
-import usePageResponsive from '../../hooks/usePageResponsive';
+// import usePageResponsive from '../../hooks/usePageResponsive';
 import Header from "./Header";
 
 
@@ -15,7 +17,7 @@ const MobileLayout = ({ children }: { children: ReactNode }) => {
     <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
       <Box my="8" px='2'>
         <Header />
-        <Box as="main" marginY={22}>
+        <Box as="main" >
           {children}
         </Box>
         <MobileMenu />
@@ -30,7 +32,7 @@ const DesktopLayout = ({ children }: { children: ReactNode }) => {
     <Box margin="0 auto" w='100%' transition="0.5s ease-out">
       <HStack w='full' h='100vh' overflowY={'auto'}>
         <DesktopMenu />
-        <Box as="main" flex='0.8' px='4'>
+        <Box as="main" flex='0.8' px='4' overflowX={'hidden'} alignSelf='flex-start'>
           {children}
         </Box>
       </HStack>

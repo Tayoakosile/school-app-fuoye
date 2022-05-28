@@ -60,7 +60,7 @@ const AllFiles = () => {
         >
             <Heading fontSize={{ base: '20px', lg: '40px' }} pb='4' px='2'>Recent Files</Heading>
             <RecentFileSection />
-            <Categories/>
+            <Categories />
         </Box>
     </>
 };
