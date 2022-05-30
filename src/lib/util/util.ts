@@ -91,16 +91,16 @@ export const responsive = {
   0: {
     items: 1,
   },
-  1000: {
-    items: 3,
+  750: {
+    items: 2,
   },
 };
 
 export const fileCategory = [
   { courseFileName: "Pol 102", numberOfFiles: "100" },
   { courseFileName: "Pol 104", numberOfFiles: "200" },
-  { courseFileName: "GST 106", numberOfFiles: "300" },
-  { courseFileName: "SOC 104", numberOfFiles: "400" },
-  { courseFileName: "SOC 102", numberOfFiles: "500" },
-  { courseFileName: "SOC 102", numberOfFiles: "600" },
+  { courseFileName: "GST 105", numberOfFiles: "300" },
+  { courseFileName: "SOC 106", numberOfFiles: "400" },
+  { courseFileName: "SOC 107", numberOfFiles: "500" },
+  { courseFileName: "SOC 104", numberOfFiles: "600" },
 ];

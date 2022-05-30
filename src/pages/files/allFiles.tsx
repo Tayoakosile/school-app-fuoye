@@ -1,68 +1,34 @@
-import { Box, Heading, Text, VStack } from "@chakra-ui/react";
-import RecentFileSection from "lib/components/FileSection/AllFile";
-import Categories from "lib/components/FileSection/Categories";
-import { imageArrayProps, responsive } from 'lib/util/util';
-import AliceCarousel from 'react-alice-carousel';
+import { Box, HStack, Input, SimpleGrid, VStack, Icon, Text, useColorModeValue, Center } from '@chakra-ui/react';
+import { fileCategory } from '../../lib/util/util';
+import { BsFolder } from 'react-icons/bs';
+import useSearchForACourse from 'hooks/useSearchForACourse';
 
-const AllFiles = () => {
+const AllCourseFiles = () => {
+    const { array, handleChange } = useSearchForACourse()
+    return <Box mt={{ base: '6', lg: '16' }}>
+        <HStack w='full' px='4' justify={{ base: 'center', lg: 'flex-end' }} >
+            <Input size='lg' placeholder='Search for a course.....' onChange={handleChange} w={{ base: '100%', lg: '50%' }} />
+        </HStack>
+        {array?.length <= 0 && <Center h='50vh'><Text fontSize='md'>This course cant be found</Text></Center>}
 
-    const items =
-        imageArrayProps.map((item, index) =>
-            <Box
-                key={index}
-                bg={`linear-gradient(-180deg, rgba(0,0,0,0.5) 55%, rgba(0,0,0,1) 100%), url("/${item.image}")`} className={`carousel_${index}`}
-                h='64'
-                w='100%'
-                borderRadius={10}
-                bgRepeat={'no-repeat'}
-                bgSize={'cover'}
-                bgPos='center'
-                position='relative'
-            // px={{ base: '36px !important', lg: '36px !important' }}
 
-            >
-                <VStack
-                    position='absolute'
-                    w='100%'
-                    h='24'
-                    bg='#313131'
-                    left='0'
-                    right='0'
-                    bottom={{ base: '0', lg: '0' }}
-                    align='flex-start'
-                    justify={'center'}
-                    spacing={{ base: '1', lg: '2' }}
-                    rounded='0px 0px 10px 10px'
-                    color='white'
-                    p='2'
-
+        <SimpleGrid columns={[2, 2, 3]} spacing={{ base: '5', lg: '10' }} px='2' pt={{ base: '8', lg: '20' }} pb='6'>
+            {array?.map((file: any) => <>
+                <VStack bg={useColorModeValue('gray.100', "gray.700")} w='100%' h={{
+                    base: '32', lg: '40'
+                }} align='center' justify='center' key={file.courseFileName} rounded='md' cursor='pointer'
+                    shadow='xl'
                 >
-                    <Text fontSize={{ base: 'lg', lg: 'lg' }} fontWeight={'400'}>POL 104</Text>
-                    <Text fontSize={{ base: 'sm', lg: 'lg' }} fontWeight={400}>Posted by {item.author}</Text>
+                    <Icon as={BsFolder} w={{ base: '10', lg: '20' }} color={useColorModeValue('brand.500', 'brand.200')} h={{ base: '10', lg: '12' }} strokeWidth={'0.5px'} />
+                    <VStack spacing='1px'>
+                        <Text textTransform='uppercase' fontWeight={'bold'} fontSize={{ base: 'md', lg: 'lg' }}>{file.courseFileName}</Text>
+                        <Text fontSize='sm'>{file.numberOfFiles} Files</Text>
+                    </VStack>
                 </VStack>
-                {/* Details about course */}
+            </>)}        </SimpleGrid>
 
-            </Box>
-        )
 
-    // const array = Array.from({ length: 5 })
+    </Box >
+}
 
-    return <>
-        <Box as='section' h='100%'
-            overflowX={'hidden'}
-
-            mt={{ base: '32px', lg: '20' }}
-            sx={{
-                '.alice-carousel__stage-item': {
-                    px: '10px !important'
-                }
-            }}
-        >
-            <Heading fontSize={{ base: '20px', lg: '40px' }} pb='4' px='2'>Recent Files</Heading>
-            <RecentFileSection />
-            <Categories/>
-        </Box>
-    </>
-};
-
-export default AllFiles
+export default AllCourseFiles

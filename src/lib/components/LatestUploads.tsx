@@ -13,7 +13,7 @@ import {
 import { useRouter } from "next/router";
 import { BsThreeDots } from "react-icons/bs";
 
-const Upload = () => {
+export const Upload = () => {
     const router = useRouter();
     return (
         <HStack
@@ -58,7 +58,7 @@ const LatestUploads = () => {
     return (
         <VStack
             as="section"
-            pt={{ base: "6" ,lg:'24'}}
+            pt={{ base: "6" ,lg:'18'}}
             align="flex-start"
             w="full"
             spacing="5"

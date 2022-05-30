@@ -32,7 +32,7 @@ const DesktopLayout = ({ children }: { children: ReactNode }) => {
     <Box margin="0 auto" w='100%' transition="0.5s ease-out">
       <HStack w='full' h='100vh' overflowY={'auto'}>
         <DesktopMenu />
-        <Box as="main" flex='0.8' px='4' overflowX={'hidden'} alignSelf='flex-start'>
+        <Box as="main" flex='0.8' px='4' overflowX={'hidden'} alignSelf='flex-start' h='100vh' overflowY={'auto'} >
           {children}
         </Box>
       </HStack>

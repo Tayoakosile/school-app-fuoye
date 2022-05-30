@@ -1,6 +1,8 @@
-import { Box, Flex, Heading, Text, useColorModeValue, HStack, Icon as ParentIcon } from '@chakra-ui/react';
+import { Box, Flex, Heading, HStack, Icon as ParentIcon, useColorModeValue } from '@chakra-ui/react';
 import Link from "next/link";
-import { Home, Bell, Plus, CloudDownload } from 'tabler-icons-react'
+import { IoFolderOutline } from 'react-icons/io5';
+import { AiOutlineUser } from 'react-icons/ai';
+import { Bell, CloudDownload, Home, Plus } from 'tabler-icons-react';
 
 
 import ThemeToggle from '../../layout/ThemeToggle';
@@ -11,7 +13,7 @@ const MobileMenuNav = [{
     label: 'Home'
 },
 {
-    Icon: Bell,
+    Icon: IoFolderOutline,
     label: 'Bell'
 },
 
@@ -19,10 +21,15 @@ const MobileMenuNav = [{
     Icon: Plus,
     label: 'Plus'
 },
+{
+    Icon: Bell,
+    label: 'Bell'
+},
+
 
 {
-    Icon: CloudDownload,
-    label: 'CloudDownload'
+    Icon: AiOutlineUser,
+    label: 'Profile'
 },
 
 ]
@@ -42,15 +49,13 @@ export const MobileMenu = () => {
             bottom="-1"
             left="0"
             right="0"
-            px='8'
+            px='6'
         >
-            {/* Home for user */}
             {/* {[Home]} */}
             {MobileMenuNav.map(({ Icon, label }) => <>
-                <Box as='span' key={label}>
-                    <ParentIcon as={Icon} attributeName={label} w='32px' h='32px' strokeWidth={1.5} />
+                <Box as='span' key={label}  >
+                    <ParentIcon as={Icon} attributeName={label} w='30px' h='30px' strokeWidth={1.5} />
                 </Box>
-
             </>)}
 
         </HStack>

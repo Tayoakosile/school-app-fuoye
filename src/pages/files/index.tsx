@@ -1,10 +1,9 @@
 import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import RecentFileSection from "lib/components/FileSection/AllFile";
 import Categories from "lib/components/FileSection/Categories";
-import { imageArrayProps, responsive } from 'lib/util/util';
-import AliceCarousel from 'react-alice-carousel';
+import { imageArrayProps } from 'lib/util/util';
 
-const AllFiles = () => {
+const Index = () => {
 
     const items =
         imageArrayProps.map((item, index) =>
@@ -65,4 +64,4 @@ const AllFiles = () => {
     </>
 };
 
-export default AllFiles
+export default Index

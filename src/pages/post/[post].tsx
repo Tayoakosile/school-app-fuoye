@@ -1,11 +1,10 @@
 import React from "react";
 import { Box, HStack, VStack } from "@chakra-ui/react";
-import Post from "pages/posts/[post]";
 
-const SingleFile = () => {
+const CreatePost = () => {
     return <>
-        <Post />
+        <Box as='section'></Box>
     </>
 };
 
-export default SingleFile
+export default CreatePost
