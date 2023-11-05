@@ -1,31 +1,25 @@
 import {
-  Box,
-  FormControl,
-  Heading,
-  Input,
-  Text,
-  VStack,
-  Button,
+  Heading, Text,
+  VStack
 } from "@chakra-ui/react";
 import Link from "next/link";
-import Select from "react-select";
 import ACFormInput from '../../reusables/ACFormInput';
 import useSignUp from '../../hooks/useSignUp';
 import ACFormDropdown from '../../reusables/ACFormDropdown';
 import AcButton from '../../reusables/ACButton';
 
 import {
-  StudentFalcultyOptions,
-  StudentLevelOptions,
-  StudentDepartmentOptions,
+  StudentLevelOptions
 } from "../util/util";
+import useGetFaculties from "../../hooks/useGetFaculties";
 
 const SignupComp = () => {
   const {control,onSubmit ,handleSubmit}= useSignUp()
+  const {allFaculties,isPageLoading,all_faculties_and_department,setAllFacultiesAndDepartment} = useGetFaculties()
+  console.log(allFaculties,'allFaculties',all_faculties_and_department)
   return (
     <VStack  pt="8" align="flex-start" spacing="12"
-    as='form'
-        onSubmit={(e)=>{e.preventDefault()}}
+    
     >
       <VStack>
         <Heading textAlign="center" fontSize="24px">
@@ -33,7 +27,10 @@ const SignupComp = () => {
         </Heading>
         <Text> Let&apos;s get you started</Text>
       </VStack>
+      
       <VStack
+      as='form'
+      onSubmit={onSubmit}
         w="full"
         spacing="6"
         
@@ -45,9 +42,19 @@ const SignupComp = () => {
         <ACFormInput control={control} name="password"label="Password" />
         <ACFormDropdown control={control} name="level"label="Level" 
         options={StudentLevelOptions}
+
         />
-        <ACFormDropdown control={control} name="faculty"label="Faculty" />
-        <ACFormDropdown control={control} name="department"label="Department" />
+        <ACFormDropdown control={control} 
+        isLoading={isPageLoading}
+        name="faculty"label="Faculty"
+        onOptionChange = {((option:any)=>setAllFacultiesAndDepartment({...all_faculties_and_department,department_id:option?.id}))}
+
+        options={all_faculties_and_department.faculties}
+
+         />
+        <ACFormDropdown control={control} 
+        options={all_faculties_and_department.departments}
+        name="department"label="Department" />
         {/* Full name */}
 
         
@@ -63,6 +70,7 @@ const SignupComp = () => {
         
         {/* Login to account */}
       </VStack>
+
       <Text fontSize="sm">
           Already Registered?
           <Link href="/login" passHref>

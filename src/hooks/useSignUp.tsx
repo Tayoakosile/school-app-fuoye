@@ -7,7 +7,7 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { signUpvalidationSchema } from "../config/validation";
 
 const useSignUp = () => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit,formState:{errors} } = useForm({
     defaultValues: {
       first_name: "",
       last_name: "",
@@ -25,10 +25,8 @@ const useSignUp = () => {
     return data;
   });
 
-  const onSubmit = ((data)=>{
-    console.log(data,'data')
-
-  })
+  console.log(errors,'errors')
+  const onSubmit = handleSubmit((data)=>{console.log(data)})
   
   return { control, onSubmit,handleSubmit };
 };

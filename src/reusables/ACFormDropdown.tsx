@@ -26,6 +26,7 @@ type ACFormDropdownProp = {
     helperText?: string;
     placeholder?: string;
     value?: any;
+    onOptionChange?:any
 }
 
 const ACFormDropdown = ({
@@ -35,7 +36,7 @@ const ACFormDropdown = ({
     control,
     name,
     isLoading,
-    helperText,
+    helperText,onOptionChange,
     placeholder,
     isDisabled
 }: ACFormDropdownProp) => {
@@ -82,8 +83,12 @@ const ACFormDropdown = ({
                         }}
                         classNamePrefix='acaid'
                         isLoading={isLoading}
+                        
+                          getOptionLabel={(option:any) => option.name}
+  
                         options={options} onBlur={onBlur} onChange={(option: any) => {
                             onChange(option)
+                            onOptionChange && onOptionChange(option)
                             
                             }} />
                     <FormErrorMessage>{error?.message}</FormErrorMessage>

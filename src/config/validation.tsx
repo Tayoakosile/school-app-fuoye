@@ -25,7 +25,7 @@ export const signUpvalidationSchema = Joi.object({
 
   email: Joi.string()
     .required()
-    .email({tlds:{allow: true}})
+    .email({tlds:{allow: false}})
     .messages({
       'any.required': 'Email is required',
       'string.empty': 'Email cannot be empty',
@@ -41,26 +41,26 @@ export const signUpvalidationSchema = Joi.object({
       'string.min': 'Password should have at least {#limit} characters',
     }),
 
-  level: Joi.string()
+  level: Joi.any()
     .required()
     .messages({
       'any.required': 'Level is required',
       'string.empty': 'Level cannot be empty',
     }),
 
-  department: Joi.string()
-    .required()
-    .messages({
-      'any.required': 'Department is required',
-      'string.empty': 'Department cannot be empty',
-    }),
+      faculty: Joi.object().required().messages({
+            "any.required": `Please choose a Faculty`,
+            "number.base": `Please choose a Faculty`,
+            "object.base": `Please choose a Faculty`,
 
-  faculty: Joi.string()
-    .required()
-    .messages({
-      'any.required': 'Faculty is required',
-      'string.empty': 'Faculty cannot be empty',
-    }),
+        }),
+        department: Joi.object().required().messages({
+            "number.base": `Please choose a Department`,
+            "any.required": `Please choose a Department`,
+            "object.base": `Please choose a Department`,
+        }),
+
+ 
 });
 
 
