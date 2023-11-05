@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, HStack, SimpleGrid, VStack, Button, Heading, Text, Tag } from '@chakra-ui/react';
 // import { CarouselProvider, Slider, Slide, Image } from "pure-react-carousel";
-import usePageResponsive from '../../hooks/usePageResponsive';
+import usePageResponsive from '../../../hooks/usePageResponsive';
 import { ClassStatus } from "lib/types/types";
 import { imageArrayProps, responsive } from 'lib/util/util';
 import AliceCarousel from 'react-alice-carousel';

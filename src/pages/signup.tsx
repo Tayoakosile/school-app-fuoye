@@ -1,7 +1,7 @@
 import SignupComp from "../lib/components/SignupComp";
 
 const signup = () => {
-  return <SignupComp />;
+  return <> <SignupComp /></>
 };
 
 export default signup;

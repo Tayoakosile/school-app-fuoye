@@ -1,6 +1,7 @@
 import { Box, VStack } from '@chakra-ui/react';
-import LatestUploads from "./LatestUploads";
-import LatestAnnouncement from './LatestAnnoucement';
+import LatestUploads from "../Dashboard/LatestUploads";
+import LatestAnnouncement from '../Dashboard/LatestAnnoucement';
+import MockExams from './MockExams';
 
 
 const Dashboard = () => {
@@ -10,9 +11,11 @@ const Dashboard = () => {
                 px: '10px !important'
             }
         }}
+        px="4"
     >
         <LatestAnnouncement />
         <LatestUploads />
+        <MockExams />
     </Box>;
 };
 

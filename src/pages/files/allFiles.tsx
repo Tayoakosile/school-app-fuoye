@@ -1,7 +1,7 @@
-import { Box, HStack, Input, SimpleGrid, VStack, Icon, Text, useColorModeValue, Center } from '@chakra-ui/react';
-import { fileCategory } from '../../lib/util/util';
-import { BsFolder } from 'react-icons/bs';
+
+import { Box, Center, HStack, Icon, Input, SimpleGrid, Text, useColorModeValue, VStack } from '@chakra-ui/react';
 import useSearchForACourse from 'hooks/useSearchForACourse';
+import { BsFolder } from 'react-icons/bs';
 
 const AllCourseFiles = () => {
     const { array, handleChange } = useSearchForACourse()

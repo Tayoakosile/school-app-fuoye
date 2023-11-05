@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { ChakraProvider } from "@chakra-ui/react";
+import { QueryClientProvider, QueryClient} from "react-query";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -9,6 +10,8 @@ import Layout from "lib/layout";
 import customTheme from "lib/styles/customTheme";
 import "lib/styles/globals.css";
 import 'react-alice-carousel/lib/alice-carousel.css';
+
+const queryClient = new QueryClient()
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
@@ -20,9 +23,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         />
       </Head>
       <DefaultSeo {...defaultSEOConfig} />
+      <QueryClientProvider client={queryClient}>
       <Layout>
+        
         <Component {...pageProps} />
       </Layout>
+      </QueryClientProvider>
     </ChakraProvider>
   );
 };

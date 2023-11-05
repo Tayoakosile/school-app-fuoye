@@ -1,4 +1,4 @@
-import Dashboard from "../../lib/components/Dashboard";
+import Dashboard from "../../lib/components/Dashboard/Dashboard";
 
 const UserDashboard = () => {
   return <Dashboard />;

@@ -54,7 +54,7 @@ export const Upload = () => {
     );
 };
 
-const LatestUploads = () => {
+const MockExams = () => {
     return (
         <VStack
             as="section"
@@ -67,15 +67,15 @@ const LatestUploads = () => {
         >
             <HStack justify="space-between" px="2" w="full">
                 <Heading color={useColorModeValue("#313131", "white")} fontSize={{ base: "20px", lg: '40px' }}>
-                    Latest Uploads
+                    Practice / Mock Exams
                 </Heading>
                 <Button variant="link" fontWeight={400}>
-                    See all
+                    View All
                 </Button>
             </HStack>
 
             <SimpleGrid spacing="4" w="full" columns={[1, 1, 2]} h="full" pb={{ base: '24', lg: '12' }}>
-                {[1, 2, 3, 4, 5].map((list) => (
+                {[1, 2, 3].map((list) => (
                     <Upload key={list} />
                 ))}
             </SimpleGrid>
@@ -83,4 +83,4 @@ const LatestUploads = () => {
     );
 };
 
-export default LatestUploads;
+export default MockExams;
