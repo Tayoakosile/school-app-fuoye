@@ -4,7 +4,7 @@ import {
     MenuButton, MenuItem, MenuList, SimpleGrid, VStack
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { Upload } from '../../../lib/components/Dashboard/LatestUploads';
+import { Upload } from '../../lib/components/Dashboard/LatestUploads';
 
 
 

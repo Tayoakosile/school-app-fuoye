@@ -14,17 +14,17 @@ type Data = {
 }
 
 
-export default function upload_files(
+export default function getSingleDepartment(
   req: NextApiRequest,
   res: NextApiResponse<APIResponse>
 ) {
   
   if(req.method=='GET') {
-    const faculty_id= req.query?.id;
-    const faculties = schoolFacultiesAndDepartment.faculties?.find(faculty=>faculty.id ===Number(faculty_id))
+    const department_id= req.query?.id;
+    const departments = schoolFacultiesAndDepartment.departments?.find(department=>department.id ===Number(department_id))
 
-if(!faculties ) return handleErrorResponse(res,{message:`Faculty with the id "${faculty_id}"`},400,'error')
-return  handleSuccessResponse(res,{data:faculties},200)
+if(!departments ) return handleErrorResponse(res,{message:`Faculty with the id "${department_id}"`},400,'error')
+return  handleSuccessResponse(res,{data:departments},200)
 
 
 
