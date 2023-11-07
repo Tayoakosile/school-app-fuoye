@@ -11,6 +11,15 @@ export const signUpvalidationSchema = Joi.object({
       'string.min': 'First Name should have at least {#limit} characters',
       'string.max': 'First Name should not exceed {#limit} characters',
     }),
+  phone: Joi.number()
+    .required()
+    .min(8)
+    .messages({
+      'any.required': 'Your Phone is required',
+      'number.empty': 'This field cannot be empty',
+      'number.min': 'This field should be up to at least {#limit} characters',
+      
+    }),
 
   last_name: Joi.string()
     .required()
@@ -41,21 +50,18 @@ export const signUpvalidationSchema = Joi.object({
       'string.min': 'Password should have at least {#limit} characters',
     }),
 
-  level: Joi.any()
-    .required()
-    .messages({
-      'any.required': 'Level is required',
-      'string.empty': 'Level cannot be empty',
-    }),
-
+  
       faculty: Joi.object().required().messages({
             "any.required": `Please choose a Faculty`,
-            "number.base": `Please choose a Faculty`,
             "object.base": `Please choose a Faculty`,
 
         }),
+      level: Joi.object().required().messages({
+            "any.required": `Please choose a level`,
+            "object.base": `Please choose a level`,
+
+        }),
         department: Joi.object().required().messages({
-            "number.base": `Please choose a Department`,
             "any.required": `Please choose a Department`,
             "object.base": `Please choose a Department`,
         }),
@@ -63,4 +69,21 @@ export const signUpvalidationSchema = Joi.object({
  
 });
 
+export const loginValidationSchema = Joi.object({
+  
+  email: Joi.string()
+  .required()
+  .email({tlds:{allow: false}})
+  .messages({
+    'any.required': 'Email is required',
+    'string.empty': 'Email cannot be empty',
+    'string.email': 'Email must be a valid email address',
+  }),
+  password: Joi.string()
+    .required()
+    .messages({
+      'any.required': 'Password is required',
+      'string.empty': 'Password cannot be empty',
+    }),
 
+})

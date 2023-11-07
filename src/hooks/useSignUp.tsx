@@ -1,13 +1,15 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import AC_BASE_URL from "../config/config";
-import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { signUpvalidationSchema } from "../config/validation";
+import { useToast } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 const useSignUp = () => {
-  const { control, handleSubmit,formState:{errors} } = useForm({
+  const toast = useToast()
+  const router = useRouter()
+  const { control,setError,reset, handleSubmit, } = useForm({
     defaultValues: {
       first_name: "",
       last_name: "",
@@ -20,15 +22,43 @@ const useSignUp = () => {
     resolver: joiResolver(signUpvalidationSchema),
   });
 
-  const { mutate: signUp } = useMutation(async (signUpInfo: any) => {
-    const data = await AC_BASE_URL.post("/signup", signUpInfo);
+  const { mutate: signUp,isLoading:isSigningUp } = useMutation(async (signUpInfo: any) => {
+    const data = await AC_BASE_URL.post("/auth/signup", signUpInfo);
     return data;
+  },{
+    onError (error:any){
+      
+      setError('email',{
+        type:'required',
+        message:error?.response?.data?.data?.email
+      })
+
+    },
+    onSuccess(){
+
+      reset()
+      toast({
+        description:"You Signed up Successfully",
+        status:"success",
+        onCloseComplete() {
+          router.push('/login')
+        },
+      })
+    }
   });
 
-  console.log(errors,'errors')
-  const onSubmit = handleSubmit((data)=>{console.log(data)})
   
-  return { control, onSubmit,handleSubmit };
+  const onSubmit = handleSubmit((data)=>{{
+    const userInfo = {...data,
+      // @ts-ignore
+      faculty_id:data?.faculty?.id,
+      // @ts-ignore
+      level:Number(data?.level?.value),
+      // @ts-ignore
+      department_id:data?.faculty?.id}
+      signUp(userInfo)
+  }})
+  return { control, onSubmit,handleSubmit,isSigningUp };
 };
 
 export default useSignUp;

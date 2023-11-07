@@ -5,9 +5,10 @@ type ACButtonProps={
     children:ReactNode
     type?:"submit" |"button",
     colorScheme?:string,
-    variant?:string
+    variant?:string;
+    isLoading?:boolean;
 }
-const AcButton = ({children,variant,type,colorScheme ='brand',...rest}:ACButtonProps,) => {
+const AcButton = ({children,variant,isLoading,type,colorScheme ='brand',...rest}:ACButtonProps,) => {
     
   return (  
     <Button size={'lg'}
@@ -15,6 +16,7 @@ const AcButton = ({children,variant,type,colorScheme ='brand',...rest}:ACButtonP
     //  boxShadow={
     //       '0px 1px 25px -5px #a300a3, 0 10px 10px -5px #a300a3'
     //     }
+    isLoading={isLoading}
      py={{base:'3.5',xl:"4"}}
      px={{base:'24px',xl:"40px"}}
      className='ac_button'
@@ -25,7 +27,7 @@ const AcButton = ({children,variant,type,colorScheme ='brand',...rest}:ACButtonP
 rounded={'100px'}
     >{children}</Button>
     
-    // <Button bg="yellow.500" ring='1'  color="ac_black.500">{children}</Button>
+    
   )
 }
 

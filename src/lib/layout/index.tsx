@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 
 // import usePageResponsive from '../../hooks/usePageResponsive';
 import Header from "./Header";
+import { useRouter } from 'next/router';
 
 
 type LayoutProps = {
@@ -13,11 +14,17 @@ type LayoutProps = {
 };
 
 const MobileLayout = ({ children }: { children: ReactNode }) => {
+  const route = useRouter()
+  if(route.pathname?.includes("login") || route.pathname?.includes("signup")  ){
+    return <Box as="main" >
+    {children}
+  </Box>
+  }
   return <>
     <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
       <Box my="8" px='2'>
         <Header />
-        <Box as="main" >
+        <Box as="main" pb='24'>
           {children}
         </Box>
         <MobileMenu />

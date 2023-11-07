@@ -10,6 +10,7 @@ import {
     useColorModeValue,
     VStack,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { BsThreeDots } from "react-icons/bs";
 
@@ -67,11 +68,13 @@ const LatestUploads = () => {
         >
             <HStack justify="space-between" px="2" w="full">
                 <Heading color={useColorModeValue("#313131", "white")} fontSize={{ base: "20px", lg: '40px' }}>
-                    MY Courses
+                    Recommended Courses
                 </Heading>
-                <Button variant="link" fontWeight={400}>
+                <Link href="/files/allFiles">
+                <Button variant="link" fontWeight={400}  >
                     See all
                 </Button>
+                </Link>
             </HStack>
 
             <SimpleGrid spacing="4" w="full" columns={[1, 1, 2]} h="full" pb={{ base: '24', lg: '12' }}>

@@ -12,7 +12,6 @@ const useGetFaculties = () => {
     const {data:allFaculties} = useQuery([],async()=>{
         const{data} = await axios.get(`/api/faculties`)
         return data
-
     },{
         onSuccess(data){
             setAllFacultiesAndDepartment({...all_faculties_and_department,faculties:data?.data?.faculties})
@@ -25,7 +24,8 @@ const useGetFaculties = () => {
     },{
         enabled:all_faculties_and_department.department_id>=1,
         onSuccess(data){
-            setAllFacultiesAndDepartment({...all_faculties_and_department,departments:data?.data?.department})
+            console.log(data,'data')
+            setAllFacultiesAndDepartment({...all_faculties_and_department,departments:data?.data?.data?.department})
         }
     })
 

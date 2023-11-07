@@ -23,7 +23,8 @@ const LatestAnnouncement = () => {
                 bgPos='center'
                 position='relative'
                 mx={{ base: '0', lg: '2' }}
-                h={{ base: '48', lg: '72' }}
+                rounded='lg'
+                h={{ base: '80', lg: '80' }}
 
             >
                 {/* Course Title and Status */}
@@ -68,13 +69,13 @@ const LatestAnnouncement = () => {
         </>)
 
     return <Box position={'relative'} h='100%' >
-        <HStack as='span' justify='space-between' mb={{ base: '0', lg: '12' }} px='4'>
-            <Heading fontSize={{ base: '20px', lg: '35px' }}>Announcement</Heading>
+        <HStack as='span' justify='space-between' mb={{ base: '0', lg: '12' }} px='2'>
+            <Heading fontSize={{ base: '20px', lg: '35px' }}>Upcoming Events</Heading>
             <Button variant='link' >See all</Button>
         </HStack>
         <Box as={AliceCarousel} w='100%' items={items} responsive={responsive} infinite autoPlay autoPlayInterval={3000}
             disableButtonsControls
-            mouseControl
+            
         />
 
     </Box >

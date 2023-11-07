@@ -3,8 +3,7 @@ import {
     FormControl,
     FormErrorMessage,
     FormHelperText,
-    FormLabel,
-    Input,
+    FormLabel
 } from "@chakra-ui/react";
 import { Control, Controller } from "react-hook-form";
 import Select from "react-select";
@@ -27,11 +26,12 @@ type ACFormDropdownProp = {
     placeholder?: string;
     value?: any;
     onOptionChange?:any
+    getOptionLabel?:string
 }
 
 const ACFormDropdown = ({
     options,
-    
+    getOptionLabel='label',
     label,
     control,
     name,
@@ -84,7 +84,7 @@ const ACFormDropdown = ({
                         classNamePrefix='acaid'
                         isLoading={isLoading}
                         
-                          getOptionLabel={(option:any) => option.name}
+                          getOptionLabel={(option:any) => option[getOptionLabel]}
   
                         options={options} onBlur={onBlur} onChange={(option: any) => {
                             onChange(option)
