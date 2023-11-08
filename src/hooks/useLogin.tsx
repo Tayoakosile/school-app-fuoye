@@ -32,7 +32,7 @@ const useLogin = () => {
 
             setError('email', {
                 type: 'required',
-                message: error?.response?.data?.data?.email
+                message: error?.response?.data?.message
             })
 
         },

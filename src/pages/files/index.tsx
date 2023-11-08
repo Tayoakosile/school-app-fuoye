@@ -28,7 +28,7 @@ useEffect(()=>{
     
     if(!inputWords)  return setFilteredFiles(allFiles)
     const fuse = new Fuse(allFiles, {
-         includeMatches: true,
+        //  includeMatches: true,
 	 findAllMatches: true,
 	
         keys: [
@@ -62,14 +62,14 @@ if(isGettingFiles){
         />
       </HStack>
       
-      {filteredFiles?.length <= 0 && (
+      {!isGettingFiles && allFiles?.length <=0 && filteredFiles?.length <= 0 && (
         <Center h="50vh">
           <Text fontSize="md">This course cant be found</Text>
         </Center>
       )}
 
       <SimpleGrid
-        columns={[1, 1, 3]}
+        columns={[2, 2, 3]}
         spacing={{ base: "5", lg: "10" }}
         px="2"
         pt={{ base: "8", lg: "20" }}
@@ -84,10 +84,12 @@ if(isGettingFiles){
                     key={file?._id}
                   >
                     <VStack
-                      bg={useColorModeValue("gray.50", "gray.700")}
+                    
+                      bg={useColorModeValue("gray.200", "gray.700")}
                       w="100%"
                       h="fit-content"
-                      p="4"
+                      minH='8'
+                      p="5"
                       spacing="4"
                       align="flex-start"
                       justify="center"

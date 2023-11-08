@@ -1,8 +1,9 @@
 {
-  "name": "nextarter-chakra",
+  "name": "acaid_readers_club",
   "version": "0.1.0",
   "private": true,
-  "author": "sozonome",
+  "author": "Tayo Akosile",
+  "proxy": "https://acaid-backend-ecde303a9cae.herokuapp.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.1",
     "@cyntler/react-doc-viewer": "^1.14.1",
     "@emotion/react": "^11.11.1",

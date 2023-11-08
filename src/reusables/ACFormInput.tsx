@@ -18,16 +18,18 @@ const ACFormInput = ({
     label,
     control,
     name,
+    isDisabled,
     helperText,
     type = "text",
-    placeholder
+    placeholder,
 }: {
     label?: string;
     control: Control<any>;
     name: string;
     helperText?: string
     type?: "text" | 'number'
-    placeholder?: string
+    placeholder?: string;
+    isDisabled?: boolean
 }) => {
     const [show, setShow] = useState(false)
     const [inputType, setInputType] = useState('text')
@@ -49,6 +51,8 @@ const ACFormInput = ({
                     <InputGroup size='md'>
                         <Input
                             h='14'
+                            isDisabled={isDisabled}
+                            isReadOnly={isDisabled}
                             ringOffset={2}
                             ringColor={'brand.500'}
                             placeholder={placeholder} size='lg' type={inputType}

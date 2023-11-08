@@ -48,7 +48,7 @@ const LoginComp = () => {
         </AcButton>
         <Text fontSize="sm">
           Not Registered?
-          <Link href="/login" passHref>
+          <Link href="/signup" passHref>
             <Text as="span" pl="1">
               Sign up
             </Text>

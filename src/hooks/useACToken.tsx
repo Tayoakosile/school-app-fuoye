@@ -9,7 +9,6 @@ const useACToken = () => {
     useEffect(() => {
 
         const storedToken = JSON.parse(localStorage.getItem('token') as string)
-        setTimeout(() => {
 
             if (dayjs().isAfter(dayjs(storedToken?.date))){
                 setToken('')
@@ -19,8 +18,9 @@ const useACToken = () => {
             }
 
             setToken(`${storedToken?.token}`)
-        }, 0);
+        // }, 0);
     }, [])
+    console.log(token)
 return {token,setToken}
 }
 export default useACToken

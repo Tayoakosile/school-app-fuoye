@@ -1,22 +1,54 @@
-import { useToken } from "@chakra-ui/react";
+import { useToast, useToken } from "@chakra-ui/react";
 import axios from "axios";
 import useACToken from "hooks/useACToken";
 
-
-
 const useACAPI = () => {
-    const {token} =   useACToken()
-    const AC_BASE_URL = axios.create({
-        baseURL: `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
-        headers:{
-            Authorization:`Bearer ${token}`
-        }
+  const { token } = useACToken();
+  const toast = useToast();
+  
+  const AC_BASE_URL = axios.create({
+    baseURL: `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+    headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": `Bearer ${token ?? "token"}`,
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    },
+    withCredentials: false,
+  });
+  
+  AC_BASE_URL.interceptors.response.use(
 
-    });
+    function (response) {
+      // Any status code that lie within the range of 2xx cause this function to trigger
+      // Do something with response data
+      return response;
+    },
+    function (error) {
+      // Any status codes that falls outside the range of 2xx cause this function to trigger
+      // Do something with response error
+    setTimeout(() => {
+      
+      if (error.response.status === 401) {
+        // localStorage.removeItem('token')
 
-    return {
-        AC_BASE_URL
+        toast({
+          description: "Please Login to Continue",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+          onCloseComplete() {
+            // window.location.replace('/login')
+          },
+        });
+      }
+    }, 1);
+      return Promise.reject(error);
     }
-}
+  );
 
-export default useACAPI
+  return {
+    AC_BASE_URL,
+  };
+};
+
+export default useACAPI;

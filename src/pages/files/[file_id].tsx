@@ -25,9 +25,16 @@ const SingleFile = () => {
     return <ACLoading/>
   }
   if(getSingleFile.error){
-    return <Center h='100vh'>
-<Error statusCode={`${getSingleFile.error?.response?.status}`} withDarkMode={false}  />
-    </Center>
+    return <VStack h='60vh' >
+      <IconButton variant='ghost' aria-label="Back Icon" size='lg' alignSelf='flex-start' 
+    onClick={()=>router.back()} rounded='full'>
+    <Icon as={BiArrowBack} />
+    </IconButton>
+    
+<Error statusCode={Number(
+  // @ts-ignore
+  getSingleFile.error?.response?.status)} withDarkMode={false}  />
+    </VStack>
 
   }
  
@@ -47,18 +54,13 @@ const SingleFile = () => {
 
       {/* Posted By Who  */}
       <VStack>
-      <Heading fontSize="xl">{file?.course_short_name}</Heading>
+      <Heading fontSize="4xl">{file?.course_short_name}</Heading>
       <Heading fontSize="lg">{file?.course_title}</Heading>
       
       <HStack  px="11px" justify="space-between">
         <VStack as="span" spacing="0" >
           <Text fontSize="sm">{getFacultyOrDepartment('faculties',file?.faculty_id)} | {getFacultyOrDepartment('departments',file?.department_id)}</Text>
-          <Text
-            fontSize="sm"
-            // color={useColorModeValue("brand.500", "brand.200")}
-          >
-            07:00pm | Jan 12, 2022
-          </Text>
+          
         </VStack>
 
 
