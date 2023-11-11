@@ -68,6 +68,7 @@ const Dashboard = () => {
 <ReactSearchAutocomplete 
 placeholder='Search for any course' 
 inputDebounce={1}
+
 onSelect={(value)=>{
     router.push('/files/faculty_id/deparment_id/file_name')
 
