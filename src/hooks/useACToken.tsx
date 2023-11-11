@@ -20,7 +20,7 @@ const useACToken = () => {
             setToken(`${storedToken?.token}`)
         // }, 0);
     }, [])
-    console.log(token)
+    
 return {token,setToken}
 }
 export default useACToken

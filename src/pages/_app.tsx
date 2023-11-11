@@ -11,7 +11,17 @@ import customTheme from "lib/styles/customTheme";
 import "lib/styles/globals.css";
 import 'react-alice-carousel/lib/alice-carousel.css';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+        refetchOnWindowFocus: true,
+        refetchOnReconnect: true,
+        retry:2,
+        staleTime: 1000 * 120 * 10,
+
+    }
+}
+})
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

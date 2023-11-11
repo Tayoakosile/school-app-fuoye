@@ -48,7 +48,7 @@ const ACFormDropdown = ({
             name={name}
             render={({
                 field: { onChange, onBlur, value, ref },
-                fieldState: { error, invalid },
+                fieldState: { error, invalid, },
             }) => (
 
                 <FormControl isInvalid={invalid}

@@ -6,17 +6,19 @@ import { useToast } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import useACAPI from "api/useACAPI";
 import { useRouter } from "next/router";
+import useAccessToken from "stores/access_token";
 
 const useLogin = () => {
     const toast = useToast()
+    const {addAccessToken} = useAccessToken()
     const router = useRouter()
     const {AC_BASE_URL} = useACAPI()
+    
     
     
 
     const { control, setError, reset, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
-
             email: "",
             password: "",
 
@@ -32,16 +34,18 @@ const useLogin = () => {
 
             setError('email', {
                 type: 'required',
-                message: error?.response?.data?.message
+                message: error?.response?.data?.message || error?.response?.data?.email
             })
 
         },
         onSuccess(data) {
             
-localStorage.setItem('token',JSON.stringify({
-    date:dayjs().add(1,'days'),
-    token:data?.data?.token
-}))
+            
+            addAccessToken({
+                date:dayjs().add(1,'days').format(),
+                token:data?.data?.token            
+            })
+
             reset()
             toast({
                 description: "Login Successfull",

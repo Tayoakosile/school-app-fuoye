@@ -13,9 +13,8 @@ const AcButton = ({children,variant,isLoading,type,colorScheme ='brand',...rest}
   return (  
     <Button size={'lg'}
      h={{base:'50px',xl:'62px'}} 
-    //  boxShadow={
-    //       '0px 1px 25px -5px #a300a3, 0 10px 10px -5px #a300a3'
-    //     }
+  boxShadow='0px 1px 25px -5px #a300a3, 0 10px 10px -5px #a300a3'
+    
     isLoading={isLoading}
      py={{base:'3.5',xl:"4"}}
      px={{base:'24px',xl:"40px"}}
