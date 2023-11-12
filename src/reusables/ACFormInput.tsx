@@ -55,7 +55,9 @@ const ACFormInput = ({
                             h='14'
                             autoComplete={autoComplete}
                             isDisabled={isDisabled}
+                            _hover={{borderColor:'brand.500'}}
                             isReadOnly={isDisabled}
+                            
                             ringOffset={2}
                             ringColor={'brand.500'}
                             placeholder={placeholder} size='lg' type={inputType}

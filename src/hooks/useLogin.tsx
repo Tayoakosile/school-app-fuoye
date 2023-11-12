@@ -17,9 +17,7 @@ const useLogin = () => {
   const {
     control,
     setError,
-    reset,
     handleSubmit,
-    formState: { errors },
   } = useForm({
     defaultValues: {
       email: "",
@@ -35,22 +33,24 @@ const useLogin = () => {
     },
     {
       onError(error: any) {
+        
         setError("email", {
           type: "required",
           message:
             error?.response?.data?.data?.message ||
-            error?.response?.data?.data?.email,
+            error?.response?.data?.data?.email ||error?.response?.data?.message
         });
       },
       onSuccess(data) {
+        console.log(data?.data?.token,'data?.data?.token')
         addAccessToken({
           date: dayjs().add(1, "days").format(),
           token: data?.data?.token,
         });
 
-        reset();
+        
         toast({
-          description: "Login Successfull",
+          description: "Login Successful",
           status: "success",
           duration: 2000,
           onCloseComplete() {
