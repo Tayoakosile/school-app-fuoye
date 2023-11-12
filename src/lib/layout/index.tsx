@@ -37,7 +37,7 @@ const DesktopLayout = ({ children }: { children: ReactNode }) => {
   return <>
     <Box margin="0 auto" w='100%' transition="0.5s ease-out">
         
-        <Box as="main" flex='1' px='4' overflowX={'hidden'} alignSelf='flex-start' h='100vh' overflowY={'auto'} >
+        <Box as="main" flex='1'  overflowX={'hidden'} alignSelf='flex-start' h='100vh' overflowY={'auto'} >
           {children}
         </Box>
     </Box>

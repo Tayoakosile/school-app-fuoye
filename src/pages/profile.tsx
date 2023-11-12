@@ -1,8 +1,8 @@
+import schoolFacultiesAndDepartment from '../config/faculties_and_department.json';
+import { StudentLevelOptions } from 'lib/util/util';
 import {
   Flex,
-  FormControl,
-  FormLabel,
-  Heading, Stack,
+  FormControl, Heading, Stack,
   useColorModeValue, Avatar,
   AvatarBadge,
   IconButton,
@@ -20,16 +20,60 @@ import ACPhoneInput from 'reusables/ACPhoneInput';
 import ACLoading from 'lib/components/ACLoading';
 import AcButton from 'reusables/ACButton';
 import useImageUploader from 'hooks/useImageUploader';
-import { useRef } from 'react';
-import { StudentLevelOptions } from 'lib/util/util';
+import { useEffect, useRef } from 'react';
 
 export default function UserProfileEdit() {
-  const {profileInfo,control,isDirty,touchedFields,onSubmit,isUpdatingProfile} = useACProfile()
+
+  const {profileInfo,control,setValue,onSubmit,isUpdatingProfile} = useACProfile()
+  console.log(profileInfo,'profileInfo')
     const inputRef = useRef<HTMLInputElement | null>();
 
   const {setFiles,avatarSrc} = useImageUploader()
   
   const {all_faculties_and_department} = useGetFaculties()
+
+  useEffect(()=> {
+    
+    if(!profileInfo.isSuccess)return;
+    const profile = profileInfo.data?.data
+
+    setValue("email", profile?.email, {
+      shouldDirty: false,
+      shouldTouch: false,
+    })
+    setValue("first_name", profile?.first_name, {
+      shouldDirty: false,
+      shouldTouch: false,
+    })
+    setValue("last_name", profile?.last_name, {
+      shouldDirty: false,
+      shouldTouch: false,
+    })
+    setValue("phone", `${profile?.phone}`, {
+      shouldDirty: false,
+      shouldTouch: false,
+    })
+
+    setValue("faculty",
+      // @ts-ignore
+      schoolFacultiesAndDepartment.faculties.find((faculty) => faculty.id === profile.faculty_id), {
+      shouldDirty: false,
+      shouldTouch: false,
+    })
+    setValue("department",
+      // @ts-ignore
+      schoolFacultiesAndDepartment.departments.find((department) => department.id === profile.faculty_id), {
+      shouldDirty: false,
+      shouldTouch: false,
+    })
+    setValue("level",
+      // @ts-ignore
+      StudentLevelOptions.find((level) => Number(level.value) === profile.level), {
+      shouldDirty: false,
+      shouldTouch: false,
+    })
+
+  },[profileInfo.isSuccess,profileInfo.data?.data])
   
   
   if(profileInfo.isLoading)return <ACLoading/>

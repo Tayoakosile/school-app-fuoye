@@ -30,6 +30,7 @@ const LoginComp = () => {
       </VStack>
       <VStack
         w="full"
+        align='flex-start'
         onSubmit={onSubmit}
         spacing="8"
         pt="8"
@@ -41,11 +42,15 @@ const LoginComp = () => {
         }}
       >
         <ACFormInput autoComplete="email" control={control} name="email" label='Email' />
-        <ACFormInput autoComplete="current-password" control={control} name="password" label="Password" />
+        <VStack as='span' w='100%' spacing='2' align='flex-start'>
 
+        <ACFormInput autoComplete="current-password" control={control} name="password" label="Password" />
+        <Link href="/forgot-password">
+<Button variant="link" fontWeight="500"> Forgot your Password?</Button>
+        </Link>
+        </VStack>
         <AcButton
         type='submit'
-          
         isLoading={isLoginIn}
         >
           
