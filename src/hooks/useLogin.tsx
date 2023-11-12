@@ -35,11 +35,12 @@ const useLogin = () => {
     },
     {
       onError(error: any) {
+        console.log(error?.response?.data,'error?.response?.data?.data')
         setError("email", {
           type: "required",
           message:
             error?.response?.data?.data?.message ||
-            error?.response?.data?.data?.email,
+            error?.response?.data?.data?.email ||error?.response?.data?.message
         });
       },
       onSuccess(data) {
@@ -50,7 +51,7 @@ const useLogin = () => {
 
         reset();
         toast({
-          description: "Login Successfull",
+          description: "Login Successful",
           status: "success",
           duration: 2000,
           onCloseComplete() {

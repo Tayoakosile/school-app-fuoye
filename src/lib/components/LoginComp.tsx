@@ -1,10 +1,6 @@
 import {
-  Button,
-  FormControl,
-  Heading,
-  Input,
-  Text,
-  VStack,
+  Box, Center, Heading, Text,
+  VStack
 } from "@chakra-ui/react";
 import useLogin from "hooks/useLogin";
 import Link from "next/link";
@@ -14,15 +10,22 @@ import ACFormInput from "reusables/ACFormInput";
 const LoginComp = () => {
   const {control,onSubmit,isLoginIn} = useLogin()
   return (
-    <VStack as="section"
-    className="ac_space"
-    >
-      <VStack as="span">
-        
-        <Heading size="xl" textAlign="center">
+    <>
+      <Center bgImage="/LoginImage.png" minH='72' w='100%' >
+      <Heading size="xl" textAlign="center"  color="white">
           Sign in to your ACAID account
           {/* Sign In to your Study Bud account */}
         </Heading>
+        
+      </Center>
+    
+    <VStack as="section"
+    className="ac_space"
+    >
+    
+      <VStack as="span">
+        
+        
         
       </VStack>
       <VStack
@@ -50,7 +53,7 @@ const LoginComp = () => {
         </AcButton>
         <Text fontSize="sm">
           Not Registered?
-          <Link href="/signup" passHref>
+          <Link href="/signup" >
             <Text as="span" pl="1">
               Sign up
             </Text>
@@ -58,7 +61,9 @@ const LoginComp = () => {
         </Text>
       </VStack>
     </VStack>
+    </>
   );
+  
 };
 
 export default LoginComp;

@@ -4,7 +4,6 @@ import { QueryClientProvider, QueryClient} from "react-query";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-
 import defaultSEOConfig from "../../next-seo.config";
 import Layout from "lib/layout";
 import customTheme from "lib/styles/customTheme";
