@@ -1,16 +1,19 @@
-import { useToast, useToken } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
-import useACToken from "hooks/useACToken";
+import { useRouter } from "next/router";
 import useAccessToken from "stores/access_token";
 
 const useACAPI = () => {
-  const { token } = useACToken();
+  
   const { access_token } = useAccessToken();
+  const router = useRouter()
   const toast = useToast();
   
   
   const AC_BASE_URL = axios.create({
     baseURL: `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+    // baseURL: `http://localhost:4000`,
+
     headers: {
         "Access-Control-Allow-Origin": "*",
         "Authorization": `Bearer ${access_token.token ?? "token"}`,
@@ -32,7 +35,7 @@ const useACAPI = () => {
     setTimeout(() => {
       
       if (error.response?.status && error.response?.status === 401) {
-        // localStorage.removeItem('token')
+        localStorage.removeItem('token')
 
         toast({
           description: "Please Login to Continue",
@@ -41,6 +44,7 @@ const useACAPI = () => {
           variant:'subtle',
           isClosable: true,
           onCloseComplete() {
+            router.replace('/')
             // window.location.replace('/')
           },
         });
