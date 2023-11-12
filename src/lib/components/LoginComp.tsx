@@ -1,5 +1,5 @@
 import {
-  Box, Center, Heading, Text,
+  Box, Button, Center, Heading, Text,
   VStack
 } from "@chakra-ui/react";
 import useLogin from "hooks/useLogin";
@@ -54,9 +54,9 @@ const LoginComp = () => {
         <Text fontSize="sm">
           Not Registered?
           <Link href="/signup" >
-            <Text as="span" pl="1">
+            <Button variant="link" size="sm" pl="3">
               Sign up
-            </Text>
+            </Button>
           </Link>
         </Text>
       </VStack>
