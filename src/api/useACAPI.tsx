@@ -41,7 +41,7 @@ const useACAPI = () => {
           variant:'subtle',
           isClosable: true,
           onCloseComplete() {
-            window.location.replace('/login')
+            window.location.replace('/')
           },
         });
       }

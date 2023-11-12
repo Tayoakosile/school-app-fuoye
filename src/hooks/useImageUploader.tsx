@@ -23,8 +23,8 @@ const useImageUploader = () => {
 
   const { mutateAsync: handleuploadImage, isLoading: isSubmittingForm } = useMutation(
     async () => {
-      console.log(file,'files')
-      // return;
+      
+      
       const storageRef = ref(storage, `images/${randomatic('0',12)}.${file.type.split("/")[1]}`);
       const uploadedByte = await uploadBytes(storageRef, file)
 

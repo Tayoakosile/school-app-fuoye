@@ -31,7 +31,7 @@ export default function UserProfileEdit() {
   
   const {all_faculties_and_department} = useGetFaculties()
   
-  console.log(profileInfo,'profileInfo')
+  
   if(profileInfo.isLoading)return <ACLoading/>
   if(profileInfo.error)return <Center h='60vh'>
     <Text> An error occured,Please refresh to continue</Text>

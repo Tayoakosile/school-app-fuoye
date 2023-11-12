@@ -8,7 +8,8 @@ type ACButtonProps={
     variant?:string;
     isLoading?:boolean;
 }
-const AcButton = ({children,variant,isLoading,type,colorScheme ='brand',...rest}:ACButtonProps,) => {
+const AcButton = (props:any) => {
+  const {children,variant,isLoading,type,colorScheme ='brand',...rest} = props
     
   return (  
     <Button size={'lg'}

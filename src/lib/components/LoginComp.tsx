@@ -14,9 +14,11 @@ import ACFormInput from "reusables/ACFormInput";
 const LoginComp = () => {
   const {control,onSubmit,isLoginIn} = useLogin()
   return (
-    <VStack as="section">
+    <VStack as="section"
+    className="ac_space"
+    >
       <VStack as="span">
-        <Text>Welcome back.</Text>
+        
         <Heading size="xl" textAlign="center">
           Sign in to your ACAID account
           {/* Sign In to your Study Bud account */}
@@ -35,8 +37,8 @@ const LoginComp = () => {
           },
         }}
       >
-        <ACFormInput control={control} name="email" label='Email' />
-        <ACFormInput control={control} name="password" label="Password" />
+        <ACFormInput autoComplete="email" control={control} name="email" label='Email' />
+        <ACFormInput autoComplete="current-password" control={control} name="password" label="Password" />
 
         <AcButton
         type='submit'

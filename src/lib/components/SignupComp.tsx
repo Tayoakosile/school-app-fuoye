@@ -21,6 +21,7 @@ const SignupComp = () => {
   
   return (
     <VStack  pt="8" align="flex-start" spacing="12"
+    className="ac_space"
     
     >
       <VStack>
@@ -38,10 +39,10 @@ const SignupComp = () => {
         
       >
         
-        <ACFormInput control={control} name="first_name"label="First Name" />
-        <ACFormInput control={control} name="last_name"label="Last Name" />
-        <ACFormInput control={control} name="email"label="Email Address" />
-        <ACFormInput control={control} name="password"label="Password" />
+        <ACFormInput autoComplete="given-name" control={control} name="first_name"label="First Name" />
+        <ACFormInput autoComplete="family-name" control={control} name="last_name"label="Last Name" />
+        <ACFormInput autoComplete="email"  control={control} name="email"label="Email Address" />
+        <ACFormInput autoComplete="new-password" control={control} name="password"label="Password" />
         <ACPhoneInput control={control} name="phone"label="Your Phone Number" />
         <ACFormDropdown control={control} name="level"label="Level" 
         options={StudentLevelOptions}/>
@@ -75,7 +76,7 @@ const SignupComp = () => {
 
       <Text fontSize="sm">
           Already Registered?
-          <Link href="/login" passHref>
+          <Link href="/" passHref>
             <Text as="span" pl="1">
               Login
             </Text>

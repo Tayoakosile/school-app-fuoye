@@ -21,11 +21,13 @@ const ACFormInput = ({
     isDisabled,
     helperText,
     type = "text",
+    autoComplete,
     placeholder,
 }: {
     label?: string;
     control: Control<any>;
     name: string;
+    autoComplete?:string;
     helperText?: string
     type?: "text" | 'number'
     placeholder?: string;
@@ -51,6 +53,7 @@ const ACFormInput = ({
                     <InputGroup size='md'>
                         <Input
                             h='14'
+                            autoComplete={autoComplete}
                             isDisabled={isDisabled}
                             isReadOnly={isDisabled}
                             ringOffset={2}

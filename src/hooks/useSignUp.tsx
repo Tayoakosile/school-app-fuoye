@@ -41,7 +41,7 @@ const useSignUp = () => {
         description:"You Signed up Successfully",
         status:"success",
         onCloseComplete() {
-          router.push('/login')
+          router.push('/')
         },
       })
     }

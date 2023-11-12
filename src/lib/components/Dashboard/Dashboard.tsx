@@ -1,10 +1,9 @@
-import { Box,Image,Icon, Heading, VStack, HStack, Text, Avatar, Button } from '@chakra-ui/react';
+import { Box, Image, Icon, Heading, VStack, HStack, Text, Avatar, Button } from '@chakra-ui/react';
 import LatestUploads from "../Dashboard/LatestUploads";
 import LatestAnnouncement from '../Dashboard/LatestAnnoucement';
 import MockExams from './MockExams';
-import Calendar from 'react-calendar';
-import {ReactSearchAutocomplete} from 'react-search-autocomplete';
-import {FaMap} from 'react-icons/fa';
+import { ReactSearchAutocomplete ,} from 'react-search-autocomplete';
+import { FaMap } from 'react-icons/fa';
 import 'react-calendar/dist/Calendar.css';
 import useSearchFiles from 'hooks/useSearchFiles';
 import { useRouter } from 'next/router';
@@ -83,7 +82,7 @@ items={[{
 onSearch={(value:any)=>{setSearchTerm(value)}}
 
    />
-<Calendar />
+
 
 <UpcomingEvents/>
     </Box>

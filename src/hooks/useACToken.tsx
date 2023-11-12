@@ -14,7 +14,7 @@ const useACToken = () => {
                 setToken('')
             }
             if (!storedToken) {
-                router.replace('/login')
+                router.replace('/')
             }
 
             setToken(`${storedToken?.token}`)

@@ -30,11 +30,11 @@ const AllCourseInDepartment = () => {
             <VStack align='flex-start' mt={{ base: '4', lg: '6' }} px='3' w='full'>
                 <Heading fontSize={{ base: '20px', lg: '20px' }} fontWeight='400' py='4'>{filterMenu == 'All' ? 'All Note' : filterMenu + "'s Note"}</Heading>
                 <SimpleGrid columns={[1, 2, 2]} spacingY='8' spacingX={'6'} w='full'>
-                    {Array.from({ length: 10 }).map(list => <>
+                    {/* {Array.from({ length: 10 }).map((list,index) => <>
                         <Box key={list} w='full' as='span'>
                             <Upload />
                         </Box>
-                    </>)}
+                    </>)} */}
                 </SimpleGrid>
             </VStack>
             {/* All list of files */}

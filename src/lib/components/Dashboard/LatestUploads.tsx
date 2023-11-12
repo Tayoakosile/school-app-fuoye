@@ -70,7 +70,7 @@ const LatestUploads = () => {
                 <Heading color={useColorModeValue("#313131", "white")} fontSize={{ base: "20px", lg: '40px' }}>
                     Recommended Courses
                 </Heading>
-                <Link href="/files/allFiles">
+                <Link href="/files">
                 <Button variant="link" fontWeight={400}  >
                     See all
                 </Button>
