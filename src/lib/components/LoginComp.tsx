@@ -12,7 +12,7 @@ const LoginComp = () => {
   return (
     <>
       <Center bgImage="/LoginImage.png" minH='72' w='100%' >
-      <Heading size="xl" textAlign="center"  color="white">
+      <Heading size="2xl" textAlign="center"  color="white" w='80%'>
           Sign in to your ACAID account
           {/* Sign In to your Study Bud account */}
         </Heading>
