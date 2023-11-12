@@ -1,7 +1,7 @@
-import { Box } from "@chakra-ui/react";
+import LoginComp from "lib/components/LoginComp";
 
-const index = () => {
-  return <Box as="section" />;
+const Login = () => {
+  return <LoginComp />;
 };
 
-export default index;
+export default Login;

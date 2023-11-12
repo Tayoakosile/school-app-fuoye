@@ -1,117 +1,87 @@
 import {
-  Box,
-  FormControl,
-  Heading,
-  Input,
-  Text,
-  VStack,
-  Button,
+  Heading, Text,
+  VStack
 } from "@chakra-ui/react";
 import Link from "next/link";
-import Select from "react-select";
+import ACFormInput from '../../reusables/ACFormInput';
+import useSignUp from '../../hooks/useSignUp';
+import ACFormDropdown from '../../reusables/ACFormDropdown';
+
+import AcButton from '../../reusables/ACButton';
 
 import {
-  StudentFalcultyOptions,
-  StudentLevelOptions,
-  StudentDepartmentOptions,
+  StudentLevelOptions
 } from "../util/util";
+import useGetFaculties from "../../hooks/useGetFaculties";
+import ACPhoneInput from "reusables/ACPhoneInput";
 
 const SignupComp = () => {
+  const {control,onSubmit ,handleSubmit,isSigningUp}= useSignUp()
+  const {isPageLoading,all_faculties_and_department,setAllFacultiesAndDepartment} = useGetFaculties()
+  
   return (
-    <VStack as="section" pt="8" align="flex-start" spacing="12">
+    <VStack  pt="8" align="flex-start" spacing="12"
+    className="ac_space"
+    
+    >
       <VStack>
         <Heading textAlign="center" fontSize="24px">
           Create your Study Account
         </Heading>
-        <Text> Let`&apos;`s get you started</Text>
+        <Text> Let&apos;s get you started</Text>
       </VStack>
+      
       <VStack
-        as="form"
+      as='form'
+      onSubmit={onSubmit}
         w="full"
         spacing="6"
-        sx={{
-          input: {
-            h: "12",
-          },
-          ".chakra__input": {
-            h: "16",
-          },
-        }}
+        
       >
-        {/* Full name */}
-        <FormControl isInvalid>
-          <Input
-            placeholder="Full Name goes in here"
-            size="lg"
-            className="chakra__input"
-          />
-        </FormControl>
-        {/* Full name */}
+        
+        <ACFormInput autoComplete="given-name" control={control} name="first_name"label="First Name" />
+        <ACFormInput autoComplete="family-name" control={control} name="last_name"label="Last Name" />
+        <ACFormInput autoComplete="email"  control={control} name="email"label="Email Address" />
+        <ACFormInput autoComplete="new-password" control={control} name="password"label="Password" />
+        <ACPhoneInput control={control} name="phone"label="Your Phone Number" />
+        <ACFormDropdown control={control} name="level"label="Level" 
+        options={StudentLevelOptions}/>
+        <ACFormDropdown control={control} 
+        isLoading={isPageLoading}
+        name="faculty"label="Faculty"
+        onOptionChange = {((option:any)=>setAllFacultiesAndDepartment({...all_faculties_and_department,department_id:option?.id}))}
+        options={all_faculties_and_department.faculties}
+        getOptionLabel="name"
+         />
+        <ACFormDropdown control={control} 
+        options={all_faculties_and_department.departments}
+        name="department"label="Department"
+        getOptionLabel="name"
+         />
+        
 
-        {/* Full name */}
-        <FormControl isInvalid>
-          <Input
-            type="email"
-            placeholder="Email Address"
-            size="lg"
-            className="chakra__input"
-          />
-        </FormControl>
-        {/* Full name */}
+        
 
-        {/* Level */}
-        <Box
-          w="full"
-          as={Select}
-          options={StudentLevelOptions}
-          placeholder="Your Current Level"
-          // onChange={(values) => this.onChange(values)}
-        />
-        {/* Level */}
-
-        {/* Department */}
-        <Box
-          w="full"
-          as={Select}
-          options={StudentFalcultyOptions}
-          placeholder="Your Falculty"
-          // onChange={(values) => this.onChange(values)}
-        />
-        {/* Department */}
-
-        {/* Department */}
-        <Box
-          w="full"
-          as={Select}
-          options={StudentDepartmentOptions}
-          placeholder="Department"
-          // onChange={(values) => this.onChange(values)}
-        />
-        {/* Department */}
-
-        <Button
-          w="full"
-          size="lg"
-          rounded="xs"
-          bg="#356EFD"
-          color="white"
-          colorScheme="blue"
+        <AcButton
+          isLoading={isSigningUp}
           type="submit"
         >
           {" "}
           Create Account
-        </Button>
+        </AcButton>
         {/* Login to account */}
-        <Text fontSize="sm">
+        
+        {/* Login to account */}
+      </VStack>
+
+      <Text fontSize="sm">
           Already Registered?
-          <Link href="/login" passHref>
+          <Link href="/" passHref>
             <Text as="span" pl="1">
               Login
             </Text>
           </Link>
         </Text>
-        {/* Login to account */}
-      </VStack>
     </VStack>
   );
 };

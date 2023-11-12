@@ -6,19 +6,28 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import useLogin from "hooks/useLogin";
 import Link from "next/link";
+import AcButton from "reusables/ACButton";
+import ACFormInput from "reusables/ACFormInput";
 
 const LoginComp = () => {
+  const {control,onSubmit,isLoginIn} = useLogin()
   return (
-    <VStack as="section">
+    <VStack as="section"
+    className="ac_space"
+    >
       <VStack as="span">
+        
         <Heading size="xl" textAlign="center">
-          Sign In to your Study Bud account
+          Sign in to your ACAID account
+          {/* Sign In to your Study Bud account */}
         </Heading>
-        <Text>Welcome back.</Text>
+        
       </VStack>
       <VStack
         w="full"
+        onSubmit={onSubmit}
         spacing="8"
         pt="8"
         as="form"
@@ -28,37 +37,20 @@ const LoginComp = () => {
           },
         }}
       >
-        {/* Full name */}
-        <FormControl isInvalid w="full">
-          <Input placeholder="Full Name " size="lg" className="chakra__input" />
-        </FormControl>
-        {/* Full name */}
+        <ACFormInput autoComplete="email" control={control} name="email" label='Email' />
+        <ACFormInput autoComplete="current-password" control={control} name="password" label="Password" />
 
-        {/* Full name */}
-        <FormControl isInvalid w="full">
-          <Input
-            placeholder="Email Address"
-            size="lg"
-            className="chakra__input"
-          />
-        </FormControl>
-        {/* Full name */}
-
-        <Button
-          w="full"
-          bg="#356EFD"
-          h="14"
-          color="white"
-          rounded="xs"
-          size="lg"
-          fontWeight="400"
+        <AcButton
+        type='submit'
+          
+        isLoading={isLoginIn}
         >
-          {" "}
+          
           Login to your account
-        </Button>
+        </AcButton>
         <Text fontSize="sm">
           Not Registered?
-          <Link href="/login" passHref>
+          <Link href="/signup" passHref>
             <Text as="span" pl="1">
               Sign up
             </Text>
