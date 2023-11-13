@@ -25,7 +25,7 @@ const useImageUploader = () => {
     async () => {
       
       
-      const storageRef = ref(storage, `images/${randomatic('0',12)}.${file.type.split("/")[1]}`);
+      const storageRef = ref(storage, `images/${randomatic('0',12)}.${file?.type.split("/")[1]}`);
       const uploadedByte = await uploadBytes(storageRef, file)
 
       const downloadURL = await getDownloadURL(uploadedByte.ref)
@@ -59,7 +59,7 @@ const useImageUploader = () => {
   }, [files])
 
 
-  return { setFiles, clearAllFiles, avatarSrc, handleuploadImage, }
+  return { setFiles, clearAllFiles, avatarSrc, handleuploadImage,files }
 }
 
 export default useImageUploader

@@ -12,7 +12,7 @@ import { useToast } from '@chakra-ui/react'
 
 const useACProfile = () => {
   const toast = useToast()
-  const { handleuploadImage } = useImageUploader()
+  const { handleuploadImage,files } = useImageUploader()
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false)
   const { control, setValue, handleSubmit, formState: { isDirty, touchedFields, errors }, } = useForm({
     defaultValues: {
@@ -73,6 +73,13 @@ const useACProfile = () => {
   const onSubmit = handleSubmit((data: any) => {
 
     setIsUpdatingProfile(true)
+    if(!files){
+    return  handleUpdateUserProfile.mutate({
+        ...data, level: Number(data?.level?.value),
+        faculty_id: data?.faculty?.id, department_id: data?.department?.id
+      })
+    }
+
     handleuploadImage().then((photoURL) => {
 
       handleUpdateUserProfile.mutate({

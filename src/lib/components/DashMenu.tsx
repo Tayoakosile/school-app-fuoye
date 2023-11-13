@@ -40,6 +40,7 @@ interface NavItemProps extends FlexProps {
   icon: IconType
   href?: string
   children: React.ReactNode
+  onClose:any
 }
 
 interface MobileProps extends FlexProps {
@@ -52,7 +53,7 @@ interface SidebarProps extends BoxProps {
 
 const LinkItems: Array<LinkItemProps> = [
   { name: 'Home', icon: FiHome,href:"/dashboard"  },
-  { name: 'Files', icon: FiTrendingUp,href:"/files" },
+  { name: 'Search For a File', icon: FiTrendingUp,href:"/files" },
   { name: 'Profile', icon: FiCompass,href:"/profile" },
   
 ]
@@ -78,7 +79,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       <VStack align='flex-start' pl='2'>
 
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} href={link.href}>
+        <NavItem key={link.name} icon={link.icon} href={link.href} onClose={onClose}>
           {link.name}
         </NavItem>
       ))}
@@ -87,17 +88,17 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   )
 }
 
-const NavItem = ({ icon, children,href, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children,href,onClose, ...rest }: NavItemProps) => {
   return (
-    <Box>
+    <Box  w='100%' onClick={onClose}>
       <Link href={`${href}`}>
 
       
-      <>
-        <Button fontWeight="500" fontSize="xl" variant="ghost" size='lg'>
+      
+        <Button fontWeight="500" fontSize="xl" variant="ghost" size='lg' w='100%' justifyContent='flex-start !important' py='2'>
         {children}
         </Button>
-      </>
+      
       </Link>
     </Box>
   )
