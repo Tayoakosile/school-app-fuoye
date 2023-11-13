@@ -73,7 +73,7 @@ const useACProfile = () => {
   const onSubmit = handleSubmit((data: any) => {
 
     setIsUpdatingProfile(true)
-    if(!files){
+    if(files.length <=0){
     return  handleUpdateUserProfile.mutate({
         ...data, level: Number(data?.level?.value),
         faculty_id: data?.faculty?.id, department_id: data?.department?.id

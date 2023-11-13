@@ -25,7 +25,7 @@ import { useEffect, useRef } from 'react';
 export default function UserProfileEdit() {
 
   const {profileInfo,control,setValue,onSubmit,isUpdatingProfile} = useACProfile()
-  console.log(profileInfo,'profileInfo')
+  
     const inputRef = useRef<HTMLInputElement | null>();
 
   const {setFiles,avatarSrc} = useImageUploader()
