@@ -72,11 +72,11 @@ const LatestUploads = () => {
     const [recommendedFiles,setRecommendedFiles] = useState([])
 
     useEffect(()=>{
-        if(!profileInfo.isSuccess && isGettingFiles) return;
+        if(!profileInfo.isSuccess && isGettingFiles &&profileInfo.isError) return;
         const userProfile = {
-            level:profileInfo.data.data?.level,
-            department_id:profileInfo.data.data?.department_id,
-            faculty_id:profileInfo.data.data?.faculty_id,
+            level:profileInfo?.data.data?.level,
+            department_id:profileInfo?.data.data?.department_id,
+            faculty_id:profileInfo?.data.data?.faculty_id,
             
         }
        
