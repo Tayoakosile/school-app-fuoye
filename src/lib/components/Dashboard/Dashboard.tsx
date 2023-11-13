@@ -108,7 +108,7 @@ const Dashboard = () => {
 
       {/* <LatestAnnouncement /> */}
       <LatestUploads />
-      <MockExams />
+      {/* <MockExams /> */}
     </Box>
   );
 };
