@@ -129,6 +129,16 @@ export const profileValidationSchema = Joi.object({
 
  
 });
+export const schema = Joi.object({
+  name: Joi.string().required(),
+  role: Joi.object().required().messages({
+    "any.required": `This field is required`,
+    "object.base": `This field is required`,
+
+}),
+  position: Joi.string().required(),
+});
+
 
 export const loginValidationSchema = Joi.object({
   

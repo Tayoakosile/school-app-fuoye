@@ -12,7 +12,6 @@ import {
 import { useEffect, useState } from "react";
 import { Controller, Control } from "react-hook-form";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { BsEyeSlash } from "react-icons/bs";
 
 const ACFormInput = ({
     label,
@@ -49,14 +48,16 @@ const ACFormInput = ({
                 fieldState: { error, invalid },
             }) => (
                 <FormControl isInvalid={invalid}>
-                    <FormLabel fontSize="lg">{label}</FormLabel>
+                    <FormLabel color='gray.700' fontSize={{base:"lg",lg:'xl'}}>{label}</FormLabel>
                     <InputGroup size='md'>
                         <Input
-                            h='14'
+                            h='12'
                             autoComplete={autoComplete}
                             isDisabled={isDisabled}
                             _hover={{borderColor:'brand.500'}}
                             isReadOnly={isDisabled}
+                            outline="none"
+                            
                             
                             ringOffset={2}
                             ringColor={'brand.500'}
