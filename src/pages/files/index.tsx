@@ -1,67 +1,144 @@
-import { Box, Heading, Text, VStack } from "@chakra-ui/react";
-import RecentFileSection from "lib/components/FileSection/AllFile";
-import Categories from "lib/components/FileSection/Categories";
-import { imageArrayProps } from 'lib/util/util';
+import {
+    Box,
+    Center,
+    HStack,
+    Icon,
+    Input,
+    SimpleGrid,
+    Spinner,
+    Text,
+    useColorModeValue,
+    VStack,
+} from "@chakra-ui/react";
+import useSearchFiles from "hooks/useSearchFiles";
+import Fuse from "fuse.js";
+import Link from "next/link";
+import { BsFiletypePdf } from "react-icons/bs";
+import { useState, useEffect } from "react";
+import { Upload } from "lib/components/Dashboard/LatestUploads";
 
-const Index = () => {
+const AllCourseFiles = () => {
+  
+  const { allFiles, searchTerm, setSearchTerm ,isGettingFiles} = useSearchFiles();
+  
+  const [inputWords,setInputWords] = useState('')
+  const [filteredFiles,setFilteredFiles] = useState<any>()
 
-    const items =
-        imageArrayProps.map((item, index) =>
-            <Box
-                key={index}
-                bg={`linear-gradient(-180deg, rgba(0,0,0,0.5) 55%, rgba(0,0,0,1) 100%), url("/${item.image}")`} className={`carousel_${index}`}
-                h='64'
-                w='100%'
-                borderRadius={10}
-                bgRepeat={'no-repeat'}
-                bgSize={'cover'}
-                bgPos='center'
-                position='relative'
-            // px={{ base: '36px !important', lg: '36px !important' }}
 
-            >
-                <VStack
-                    position='absolute'
-                    w='100%'
-                    h='24'
-                    bg='#313131'
-                    left='0'
-                    right='0'
-                    bottom={{ base: '0', lg: '0' }}
-                    align='flex-start'
-                    justify={'center'}
-                    spacing={{ base: '1', lg: '2' }}
-                    rounded='0px 0px 10px 10px'
-                    color='white'
-                    p='2'
+useEffect(()=>{
+    
+    if(!inputWords)  return setFilteredFiles(allFiles)
+    const fuse = new Fuse(allFiles, {
+        //  includeMatches: true,
+	 findAllMatches: true,
+	
+        keys: [
+            "department",
+            "faculty",
+            "course_short_name",
+            "course_code",
+            "course_title",
+        ]
+    })
+    
+    setFilteredFiles(fuse.search(inputWords)?.map((data:any)=>{return {...data?.item}}))
+},[inputWords,allFiles])
 
-                >
-                    <Text fontSize={{ base: 'lg', lg: 'lg' }} fontWeight={'400'}>POL 104</Text>
-                    <Text fontSize={{ base: 'sm', lg: 'lg' }} fontWeight={400}>Posted by {item.author}</Text>
-                </VStack>
-                {/* Details about course */}
 
-            </Box>
-        )
+if(isGettingFiles){
+  return <Center h='100vh' w='100%'>
+    <Spinner size='lg' color="brand.500"  />
+  </Center>
+}
+  return (
+    <Box mt={{ base: "6", lg: "16" }}>
+      <HStack w="full" px="4" justify={{ base: "center", lg: "flex-end" }}>
+        <Input
+          size="lg"
 
-    // const array = Array.from({ length: 5 })
+          placeholder="Search for a course....."
+          onChange={(e:any)=>setInputWords(e.target.value)}
+          
+          w={{ base: "100%", lg: "50%" }}
+        />
+      </HStack>
+      
+      {!isGettingFiles && allFiles?.length <=0 && filteredFiles?.length <= 0 && (
+        <Center h="50vh">
+          <Text fontSize="md">This course cant be found</Text>
+        </Center>
+      )}
 
-    return <>
-        <Box as='section' h='100%'
-            overflowX={'hidden'}
-
-            mt={{ base: '32px', lg: '20' }}
-            sx={{
-                '.alice-carousel__stage-item': {
-                    px: '10px !important'
-                }
-            }}
-        >
-            <Heading fontSize={{ base: '20px', lg: '40px' }} pb='4' px='2'>Recent Files</Heading>
-            <RecentFileSection />
-            <Categories />
-        </Box>
-    </>
+      <SimpleGrid
+        columns={[1, 1]}
+        spacing={{ base: "5", lg: "10" }}
+        px="2"
+        pt={{ base: "8", lg: "20" }}
+        pb="6"
+      >
+        {filteredFiles?.map((file: any) => {
+            // const file  = inputWords ? data?.item : data
+            return <Upload key={file?._id} isLoading={isGettingFiles} list={file} />
+            return (
+                <>
+                  <Link
+                    href={`/files/${file?.course_short_name}`}
+                    key={file?._id}
+                  >
+                    <VStack
+                    
+                      bg={useColorModeValue("gray.200", "gray.700")}
+                      w="100%"
+                      h="fit-content"
+                      minH='8'
+                      p="5"
+                      spacing="4"
+                      align="flex-start"
+                      justify="center"
+                      key={file.courseFileName}
+                      rounded="md"
+                      cursor="pointer"
+                      shadow="xl"
+                    >
+                      <Icon
+                        as={BsFiletypePdf}
+                        w={{ base: "12", lg: "20" }}
+                        color={useColorModeValue("brand.500", "brand.200")}
+                        h={{ base: "12", lg: "12" }}
+                        strokeWidth={"0.5px"}
+                      />
+                      <VStack spacing="1" align="flex-start">
+                        <Text
+                          textTransform="uppercase"
+                          fontWeight={"bold"}
+                          fontSize={{ base: "xl", lg: "lg" }}
+                        >
+                          {file.course_short_name}
+                        </Text>
+      
+                        <Text
+                          textTransform="uppercase"
+                          fontSize={{ base: "sm", lg: "lg" }}
+                        >
+                          {file?.course_title}
+                        </Text>
+                        <Text
+                          fontWeight={"normal"}
+                          fontSize={{ base: "xs", lg: "lg" }}
+                        >
+                          {file?.faculty} | {file?.department}
+                        </Text>
+                      </VStack>
+                    </VStack>
+                  </Link>
+                </>
+              )
+        })}{" "}
+      </SimpleGrid>
+    </Box>
+  );
 };
 
-export default Index
+
+export default AllCourseFiles;
+

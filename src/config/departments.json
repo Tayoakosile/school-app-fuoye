@@ -1,0 +1,244 @@
+{
+    "departments": [
+        {
+            "id": 1,
+            "faculty_id": 1,
+            "name": "Agricultural & Bio-resources Engineering"
+        },
+        {
+            "id": 2,
+            "faculty_id": 1,
+            "name": "Civil Engineering"
+        },
+        {
+            "id": 3,
+            "faculty_id": 1,
+            "name": "Computer Engineering"
+        },
+        {
+            "id": 4,
+            "faculty_id": 1,
+            "name": "Electrical & Electronics Engineering"
+        },
+        {
+            "id": 5,
+            "faculty_id": 1,
+            "name": "Mechanical & Mechatronics Engineering"
+        },
+        {
+            "id": 6,
+            "faculty_id": 1,
+            "name": "Metallurgical & Materials Engineering"
+        },
+        {
+            "id": 7,
+            "faculty_id": 2,
+            "name": "Animal and Environmental Biology"
+        },
+        {
+            "id": 8,
+            "faculty_id": 2,
+            "name": "Microbiology"
+        },
+        {
+            "id": 9,
+            "faculty_id": 2,
+            "name": "Geology"
+        },
+        {
+            "id": 10,
+            "faculty_id": 2,
+            "name": "Geophysics"
+        },
+        {
+            "id": 11,
+            "faculty_id": 2,
+            "name": "Physics"
+        },
+        {
+            "id": 12,
+            "faculty_id": 2,
+            "name": "Biochemistry"
+        },
+        {
+            "id": 13,
+            "faculty_id": 2,
+            "name": "Industrial Chemistry"
+        },
+        {
+            "id": 14,
+            "faculty_id": 2,
+            "name": "Mathematics"
+        },
+        {
+            "id": 15,
+            "faculty_id": 2,
+            "name": "Plant Science & Biotechnology"
+        },
+        {
+            "id": 16,
+            "faculty_id": 2,
+            "name": "Computer Science"
+        },
+        {
+            "id": 17,
+            "faculty_id": 3,
+            "name": "Theatre Arts"
+        },
+        {
+            "id": 18,
+            "faculty_id": 3,
+            "name": "English and Literary Studies"
+        },
+        {
+            "id": 19,
+            "faculty_id": 3,
+            "name": "Linguistics and Languages"
+        },
+        {
+            "id": 20,
+            "faculty_id": 3,
+            "name": "History and International Studies"
+        },
+        {
+            "id": 21,
+            "faculty_id": 6,
+            "name": "Agricultural Economics and Extension"
+        },
+        {
+            "id": 22,
+            "faculty_id": 6,
+            "name": "Fisheries and Aquaculture"
+        },
+        {
+            "id": 23,
+            "faculty_id": 6,
+            "name": "Soil Science"
+        },
+        {
+            "id": 24,
+            "faculty_id": 6,
+            "name": "Water Resources and Agro-Meteorology"
+        },
+        {
+            "id": 25,
+            "faculty_id": 6,
+            "name": "Forestry and Wildlife Management"
+        },
+        {
+            "id": 26,
+            "faculty_id": 6,
+            "name": "Animal Science"
+        },
+        {
+            "id": 27,
+            "faculty_id": 6,
+            "name": "Agronomy"
+        },
+        {
+            "id": 28,
+            "faculty_id": 6,
+            "name": "Food Science and Technology"
+        },
+        {
+            "id": 29,
+            "faculty_id": 7,
+            "name": "Criminology and Security Studies"
+        },
+        {
+            "id": 30,
+            "faculty_id": 7,
+            "name": "Demography and Social Statistics"
+        },
+        {
+            "id": 31,
+            "faculty_id": 7,
+            "name": "Economics and Development Studies"
+        },
+        {
+            "id": 32,
+            "faculty_id": 7,
+            "name": "Mass Communication"
+        },
+        {
+            "id": 33,
+            "faculty_id": 7,
+            "name": "Peace and Conflict Studies"
+        },
+        {
+            "id": 34,
+            "faculty_id": 7,
+            "name": "Political Science"
+        },
+        {
+            "id": 35,
+            "faculty_id": 7,
+            "name": "Psychology"
+        },
+        {
+            "id": 36,
+            "faculty_id": 7,
+            "name": "Sociology"
+        },
+        {
+            "id": 37,
+            "faculty_id": 9,
+            "name": "Accounting"
+        },
+        {
+            "id": 38,
+            "faculty_id": 9,
+            "name": "Banking and Finance"
+        },
+        {
+            "id": 39,
+            "faculty_id": 9,
+            "name": "Business Administration"
+        },
+        {
+            "id": 40,
+            "faculty_id": 9,
+            "name": "Public Administration"
+        },
+        {
+            "id": 41,
+            "faculty_id": 10,
+            "name": "Biology Education"
+        },
+        {
+            "id": 42,
+            "faculty_id": 10,
+            "name": "Educational Management"
+        },
+        {
+            "id": 43,
+            "faculty_id": 10,
+            "name": "Library and Information Science Education"
+        },
+        {
+            "id": 44,
+            "faculty_id": 10,
+            "name": "Agricultural Education"
+        },
+        {
+            "id": 45,
+            "faculty_id": 10,
+            "name": "Business Education"
+        },
+        {
+            "id": 46,
+            "faculty_id": 10,
+            "name": "Chemistry Education"
+        },
+        {
+            "id": 47,
+            "faculty_id": 10,
+            "name": "Mathematics Education"
+        },
+        {
+            "id": 48,
+            "faculty_id": 10,
+            "name": "English Education"
+        }
+    ]
+}

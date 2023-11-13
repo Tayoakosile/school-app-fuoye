@@ -1,0 +1,60 @@
+{
+    "faculties": [
+      {
+        "id": 1,
+        "name": "Faculty of Engineering",
+        "slug": "engineering"
+      },
+      {
+        "id": 2,
+        "name": "Faculty of Science",
+        "slug": "science"
+      },
+      {
+        "id": 3,
+        "name": "Faculty of Arts",
+        "slug": "arts"
+      },
+      {
+        "id": 4,
+        "name": "Faculty of Basic Medical Sciences",
+        "slug": "basic medical sciences"
+      },
+      {
+        "id": 5,
+        "name": "Faculty of Pharmacy",
+        "slug": "pharmacy"
+      },
+      {
+        "id": 6,
+        "name": "Faculty of Agriculture",
+        "slug": "agriculture"
+      },
+      {
+        "id": 7,
+        "name": "Faculty of Social Sciences",
+        "slug": "social sciences"
+      },
+      {
+        "id": 8,
+        "name": "Faculty of Law",
+        "slug": "law"
+      },
+      {
+        "id": 9,
+        "name": "Faculty of Management Sciences",
+        "slug": "management sciences"
+      },
+      {
+        "id": 10,
+        "name": "Faculty of Education",
+        "slug": "education"
+      },
+      {
+        "id": 11,
+        "name": "Faculty of Environmental Design and Management",
+        "slug": "environmental design and management"
+      }
+    ]
+  }
+  
