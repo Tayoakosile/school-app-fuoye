@@ -15,6 +15,7 @@ import Fuse from "fuse.js";
 import Link from "next/link";
 import { BsFiletypePdf } from "react-icons/bs";
 import { useState, useEffect } from "react";
+import { Upload } from "lib/components/Dashboard/LatestUploads";
 
 const AllCourseFiles = () => {
   
@@ -69,7 +70,7 @@ if(isGettingFiles){
       )}
 
       <SimpleGrid
-        columns={[2, 2, 3]}
+        columns={[1, 1]}
         spacing={{ base: "5", lg: "10" }}
         px="2"
         pt={{ base: "8", lg: "20" }}
@@ -77,6 +78,7 @@ if(isGettingFiles){
       >
         {filteredFiles?.map((file: any) => {
             // const file  = inputWords ? data?.item : data
+            return <Upload key={file?._id} isLoading={isGettingFiles} list={file} />
             return (
                 <>
                   <Link
@@ -137,4 +139,6 @@ if(isGettingFiles){
   );
 };
 
+
 export default AllCourseFiles;
+

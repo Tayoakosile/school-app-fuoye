@@ -82,7 +82,7 @@ const Dashboard = () => {
       px="2"
     >
       <Box>
-        <Heading py="4">Welcome, {profileInfo?.data?.data?.first_name ??''}</Heading>
+        <Heading py="4" >Welcome, {profileInfo?.data?.data?.first_name ??''}</Heading>
         <ReactSearchAutocomplete
           placeholder="Search for any course"
           className="ac_search_autocomplete"
