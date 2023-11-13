@@ -1,6 +1,5 @@
 import {
-  Heading, Text,
-  VStack
+  Heading, Text, Center, VStack, Button
 } from "@chakra-ui/react";
 import Link from "next/link";
 import ACFormInput from '../../reusables/ACFormInput';
@@ -20,21 +19,43 @@ const SignupComp = () => {
   const {isPageLoading,all_faculties_and_department,setAllFacultiesAndDepartment} = useGetFaculties()
   
   return (
-    <VStack  pt="8" align="flex-start" spacing="12"
-    className="ac_space"
-    
-    >
-      <VStack>
-        <Heading textAlign="center" fontSize="24px">
-          Create your Study Account
+    <VStack  align="flex-start" spacing="3">
+      <Center
+        bgImage="/login_image_3.png"
+        minH="35vh"
+        w={{ base: "100%", md: "40%" }}
+        bgRepeat={"repeat-x"}
+        bgSize={"cover"}
+      >
+        <VStack w='100%' align='flex-start'
+        className="ac_space"
+        >
+
+        <Heading
+          size="2xl"
+          textAlign={{base:'left',lg:"center"}}
+          color="white"
+          
+          w={{ base: "100%", md: "90%" }}
+          >
+         Register
+          
         </Heading>
-        <Text> Let&apos;s get you started</Text>
-      </VStack>
+      <Text color='white'> Create your account</Text>
+          </VStack>
+      </Center>
+
+      {/* <VStack align='flex-start'>
+        <Heading textAlign="center" fontSize="24px">
+          Register
+        </Heading>
+      </VStack> */}
       
       <VStack
       as='form'
       onSubmit={onSubmit}
         w="full"
+        className="ac_space ac_spacing"
         spacing="6"
         
       >
@@ -65,6 +86,7 @@ const SignupComp = () => {
         <AcButton
           isLoading={isSigningUp}
           type="submit"
+          w='100%'
         >
           {" "}
           Create Account
@@ -74,12 +96,12 @@ const SignupComp = () => {
         {/* Login to account */}
       </VStack>
 
-      <Text fontSize="sm">
+      <Text fontSize="base" className='ac_space' my='6'>
           Already Registered?
           <Link href="/" passHref>
-            <Text as="span" pl="1">
+            <Button variant='link' pl="1">
               Login
-            </Text>
+            </Button>
           </Link>
         </Text>
     </VStack>

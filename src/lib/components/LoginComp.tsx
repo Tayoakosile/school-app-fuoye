@@ -17,7 +17,7 @@ const LoginComp = () => {
     <Stack direction={{ base: "column", md: "row" }} minH="100vh">
       <Center
         bgImage="/login_image_3.png"
-        minH="50vh"
+        minH="35vh"
         w={{ base: "100%", md: "40%" }}
         bgRepeat={"repeat-x"}
         bgSize={"cover"}

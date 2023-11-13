@@ -91,7 +91,7 @@ const ForgotPassword = () => {
       >
         <Center
           bgImage="/login_image_3.png"
-          minH={{ base: "48", lg: "50vh" }}
+          minH={{ base: "35vh", lg: "50vh" }}
           w={{ base: "100%", md: "45%" }}
           alignItems="flex-start"
           bgRepeat={"repeat-x"}
