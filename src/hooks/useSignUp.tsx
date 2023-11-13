@@ -55,7 +55,7 @@ const useSignUp = () => {
       // @ts-ignore
       level:Number(data?.level?.value),
       // @ts-ignore
-      department_id:data?.faculty?.id}
+      department_id:data?.department?.id}
       signUp(userInfo)
   }})
   return { control, onSubmit,handleSubmit,isSigningUp };

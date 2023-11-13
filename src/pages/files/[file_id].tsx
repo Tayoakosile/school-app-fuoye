@@ -42,8 +42,8 @@ const SingleFile = () => {
     <>
     
     <IconButton variant='ghost' aria-label="Back Icon" size='lg' 
-    onClick={()=>router.back()} rounded='full'>
-    <Icon as={BiArrowBack} />
+    onClick={()=>router.back()} rounded='full' className=' ac_space' mt='3'>
+    <Icon as={BiArrowBack} w='6' h='6' />
     </IconButton>
     
     <VStack as="section" spacing="12"  pt='4' >
@@ -59,7 +59,8 @@ const SingleFile = () => {
       
       <HStack  px="11px" justify="space-between">
         <VStack as="span" spacing="0" >
-          <Text fontSize="sm">{getFacultyOrDepartment('faculties',file?.faculty_id)} | {getFacultyOrDepartment('departments',file?.department_id)}</Text>
+          <Text fontSize="sm">{getFacultyOrDepartment('faculties',file?.faculty_id)}</Text>
+          <Text fontSize="sm">{getFacultyOrDepartment('departments',file?.department_id)}</Text>
           
         </VStack>
 
@@ -68,8 +69,8 @@ const SingleFile = () => {
       </VStack>
       <Image src='/pdf.png' />
 
-      {/* Posted By Who  */}
-    <a href={file?.file}  download="nme">
+      
+    <a href={file?.file}  download={file?.name}>
 <AcButton>
         
     Download

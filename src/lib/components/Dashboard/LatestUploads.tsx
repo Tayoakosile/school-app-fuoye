@@ -42,19 +42,19 @@ export const Upload = ({isLoading,list}:{isLoading:boolean,list:any}) => {
             <HStack as="span" >
                 <Icon as={HiOutlineDocumentArrowDown} w='14' h='14' strokeWidth={'0.9'} color='brand.500' />
                 <VStack align="flex-start" w="full" spacing="0.5">
-                    <Text fontSize="xl" whiteSpace="nowrap" w="100%" isTruncated fontWeight="bold">
+                    <Text fontSize="xl" whiteSpace="nowrap" w="100%" isTruncated fontWeight="bold" maxW='80%'>
                         {list?.course_short_name}
                     </Text>
-                    <Text fontSize="sm" w="100%" isTruncated maxW='90%'>
-                        Course Title: {list?.course_title}
+                    <Text fontSize="sm" w="100%" isTruncated maxW='80%'>
+                         {list?.course_title}
                         {" "}
                     </Text>
-                    <Text fontSize="xs" w="100%" isTruncated maxW='95%' >
-                         {list?.faculty} |  <Text as='span' fontSize="xs" w="100%" isTruncated>
-                        {list?.department}
-                        {" "}
+                    <Text fontSize="xs" w="100%" isTruncated maxW='95%'>
+                         {list?.faculty} 
                     </Text>
-                        {" "}
+                          <Text as='span' fontSize="xs" w="100%" isTruncated maxW='80%'>
+                        Dept. of {list?.department}
+                        
                     </Text>
                     
                     

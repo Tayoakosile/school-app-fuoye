@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
   useToast,
-  ScaleFade,
+  IconButton
 } from "@chakra-ui/react";
 import { joiResolver } from "@hookform/resolvers/joi";
 import useACAPI from "api/useACAPI";
@@ -18,6 +18,7 @@ import AcButton from "reusables/ACButton";
 import ACFormInput from "reusables/ACFormInput";
 import Joi from "joi";
 import { BsArrowLeft } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 const ResetPasswordSuccessful = () => {
   return (
@@ -81,6 +82,7 @@ const ForgotPassword = () => {
   const onSubmit = handleSubmit((data) => {
     mutate(data);
   });
+  const router = useRouter()
 
   return (
     <div>
@@ -98,24 +100,32 @@ const ForgotPassword = () => {
           bgSize={"cover"}
         >
           <VStack align="flex-start" justify="space-between" w="100%" h={{base:"48",md:'100%'}}>
+            
+            <IconButton variant='ghost' aria-label="Back button" 
+            my={{base:"6",md:'10'}}
+            size='lg'
+            p='4'
+            mx={{base:"6",md:'10'}}
+            >
             <Icon
               as={BsArrowLeft}
+              onClick={()=>router.back()}
               color="#fff"
               w={{base:"6",md:'10'}}
               h={{base:"6",md:'10'}}
               
               
-              my={{base:"6",md:'10'}}
-              mx={{base:"6",md:'10'}}
+              
               size="lg"
             />
+            </IconButton>
 
-            <VStack justify='center' h='100%'  alignSelf="center" className="ac_space" pb="4">
+            <VStack justify='center' h='100%'  alignSelf="flex-start" className="ac_space" pb="4">
               <Heading
                 fontSize={{base:'2xl',md:'4xl',lg:"5xl"}}
                 color="white"
                 textAlign="left"
-                w={{ base: "700%", md: "95%" }}
+                w={{ base: "100%", md: "95%" }}
               >
                 Forgot Your Password?
               </Heading>

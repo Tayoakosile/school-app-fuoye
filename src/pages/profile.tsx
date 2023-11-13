@@ -30,12 +30,16 @@ export default function UserProfileEdit() {
 
   const {setFiles,avatarSrc} = useImageUploader()
   
-  const {all_faculties_and_department} = useGetFaculties()
+  const {all_faculties_and_department,setAllFacultiesAndDepartment} = useGetFaculties()
 
   useEffect(()=> {
-    
     if(!profileInfo.isSuccess)return;
     const profile = profileInfo.data?.data
+    
+    setAllFacultiesAndDepartment({...all_faculties_and_department, 
+      // @ts-ignore
+      departments:schoolFacultiesAndDepartment.departments.filter((department)=>department.faculty_id ==profile?.faculty_id)
+    })
 
     setValue("email", profile?.email, {
       shouldDirty: false,
@@ -62,7 +66,7 @@ export default function UserProfileEdit() {
     })
     setValue("department",
       // @ts-ignore
-      schoolFacultiesAndDepartment.departments.find((department) => department.id === profile.faculty_id), {
+      schoolFacultiesAndDepartment.departments.find((department) => department.id === profile.department_id), {
       shouldDirty: false,
       shouldTouch: false,
     })

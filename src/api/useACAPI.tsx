@@ -11,7 +11,8 @@ const useACAPI = () => {
   
   
   const AC_BASE_URL = axios.create({
-    baseURL: `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
+    baseURL: `https://acaid-backend-ecde303a9cae.herokuapp.com`,
+    // baseURL: `${process.env.NEXT_PUBLIC_BACKEND_URL}`,
     // baseURL: `http://localhost:4000`,
 
     headers: {
