@@ -87,7 +87,7 @@ const Dashboard = () => {
           placeholder="Search for any course"
           className="ac_search_autocomplete"
           onSelect={(value) => {
-            router.push("/files/faculty_id/deparment_id/file_name");
+            router.push(`files/${value?.course_short_name}`);
           }}
           fuseOptions={{
             keys: [
