@@ -60,11 +60,8 @@ const UpcomingEvents = () => {
 
 const Dashboard = () => {
   const router = useRouter();
-
   const { allFiles } = useSearchFiles();
   const {profileInfo } = useACProfile()
-
-    console.log(profileInfo?.data?.data,'profileInfo')
   
 
   return (

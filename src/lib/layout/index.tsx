@@ -13,7 +13,9 @@ type LayoutProps = {
 const MobileLayout = ({ children }: { children: ReactNode }) => {
   const route = useRouter();
 
-  if (route.pathname == "/" || route.pathname?.includes("signup") || route.pathname == "/forgot-password") {
+  if (route.pathname == "/" || route.pathname?.includes("signup") || route.pathname == "/forgot-password" 
+  ||route.pathname?.includes("admin")
+  ) {
     return <Box as="main">{children}</Box>;
   }
   return (
