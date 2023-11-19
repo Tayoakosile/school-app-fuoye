@@ -33,10 +33,12 @@ const useAdminGetTeams = () => {
           "Password must be at least 3 characters long and contain only alphanumeric characters.",
       }),
     position: Joi.any().when("role.value", {
-      is: "admin" || "executives" || "executive",
+      is: "admin" || "executive",
       then: Joi.string().required().messages({
         "any.required": "Position is a required field",
+        "string.empty": "This field is required",
       }),
+      
     }),
 
     role: Joi.object({
@@ -86,6 +88,7 @@ const useAdminGetTeams = () => {
       : setIsDistrictLeader(false);
   }, [teamRole]);
 
+  console.log(errors,'errors');
   return {
     userSchema,
     control,

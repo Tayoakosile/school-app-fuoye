@@ -1,4 +1,4 @@
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 import {
   SimpleGrid,
   Input,
@@ -17,8 +17,10 @@ import { Controller } from "react-hook-form";
 import AcButton from "reusables/ACButton";
 import ACFormDropdown from "reusables/ACFormDropdown";
 import ACFormInput from "reusables/ACFormInput";
+import { useRouter } from "next/router";
 
 const AddNewTeam = () => {
+  const router = useRouter();
   const {
     control,
     setValue,
@@ -26,7 +28,7 @@ const AddNewTeam = () => {
     is_district_leader,
     all_faculties_and_department,
   } = useAdminGetTeams();
-  console.log(all_faculties_and_department, "all_faculties_and_department");
+
   const handleClick = () => {
     setValue("password", randomatic("A0", 8), {
       shouldValidate: true,
@@ -36,7 +38,7 @@ const AddNewTeam = () => {
   const options = [
     {
       label: "Executives",
-      value: "executives",
+      value: "executive",
     },
     {
       label: "District Leader",
@@ -48,7 +50,9 @@ const AddNewTeam = () => {
     },
   ];
 
-  const onSubmit = handleSubmit((data) => console.log(data, "datadata"));
+  const onSubmit = handleSubmit((data) =>
+    router.push("/admin/teams/team-succesfull")
+  );
   return (
     <form onSubmit={onSubmit}>
       <SimpleGrid columns={{ base: 1, lg: 2 }} spacingX={8} pb="8" spacingY={6}>
@@ -68,19 +72,20 @@ const AddNewTeam = () => {
           control={control}
         />
 
-        <Collapse in={!is_district_leader} >
+        <Collapse in={!is_district_leader}>
           <ACFormInput label="Position" name="position" control={control} />
         </Collapse>
-        
-        <motion.div animate={{
-            opacity:is_district_leader? 1:0,
-            scale:is_district_leader? 1:0.4,
-            transitionEnd:{display:is_district_leader? 'block':'none'}
-        }} >
+
+        <motion.div
+          animate={{
+            opacity: is_district_leader ? 1 : 0,
+            scale: is_district_leader ? 1 : 0.4,
+            transitionEnd: { display: is_district_leader ? "block" : "none" },
+          }}
+        >
           <ACFormDropdown
             // options={options}
             options={all_faculties_and_department?.faculties}
-            
             getOptionLabel="name"
             label="District Leader for What Faculty?"
             name="faculty"
