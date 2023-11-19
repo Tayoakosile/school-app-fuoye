@@ -58,12 +58,11 @@ const ACFormInput = ({
                             isReadOnly={isDisabled}
                             outline="none"
                             
-                            
                             ringOffset={2}
                             ringColor={'brand.500'}
                             placeholder={placeholder} size='lg' type={inputType}
-                            value={value} onChange={onChange} onBlur={onBlur} />
-                        {!error?.message && <FormHelperText>{helperText}</FormHelperText>}
+                            value={value ??''} onChange={onChange} onBlur={onBlur} />
+                        
                         
                         {name == 'password' &&<InputRightElement width='4.5rem'>
                             <Icon w='6' h='6' mt='4' onClick={handleClick} as={ inputType == 'text'? AiOutlineEye:AiOutlineEyeInvisible}/>
@@ -72,6 +71,7 @@ const ACFormInput = ({
                             </Icon> */}
                         </InputRightElement>}
                     </InputGroup>
+                        {!error?.message && <FormHelperText>{helperText}</FormHelperText>}
 
                     <FormErrorMessage>{`${error?.message}`}</FormErrorMessage>
 
@@ -82,3 +82,4 @@ const ACFormInput = ({
 };
 
 export default ACFormInput;
+ 

@@ -1,15 +1,14 @@
-import { Button } from '@chakra-ui/react'
+import { Button, ButtonProps } from '@chakra-ui/react'
 import React, { ReactNode } from 'react'
 
-type ACButtonProps={
+interface ACButtonProps extends ButtonProps{
     children:ReactNode
     type?:"submit" |"button",
     colorScheme?:string,
-    variant?:string;
     isLoading?:boolean;
 }
-const AcButton = (props:any) => {
-  const {children,variant,isLoading,type,colorScheme ='brand',...rest} = props
+const AcButton = ({children,variant,isLoading,type,colorScheme ='brand',...rest}:ACButtonProps) => {
+  
     
   return (  
     <Button size={'lg'}

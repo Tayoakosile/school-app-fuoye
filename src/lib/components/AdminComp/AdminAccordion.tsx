@@ -7,25 +7,23 @@ import {
   AccordionPanel,
   Flex,
   Text,
-  VStack,
-  HStack,
+  VStack
 } from "@chakra-ui/react";
 
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import dayjs from "dayjs";
 
 const ListComp = ({title,value}:{title:string,value:string}) => {
   return (
-    <HStack w="100%" justify="space-between">
+    <VStack w="100%" justify="space-between" align='flex-start' spacing='0'>
       <Text fontSize="sm" color='gray.700' fontWeight={'medium'}>{title}:</Text>
-      <Text color="gray.800" fontWeight={"semibold"} fontSize="md">
+      <Text color="gray.800" fontWeight={"semibold"} fontSize="sm" noOfLines={4} isTruncated maxW='100%'>
         {value}
       </Text>
-    </HStack>
+    </VStack>
   );
 };
 export default function AdminAccordion({user}:{user:any}) {
-  console.log(user,'useruser')
+  
   return (
     <Flex w="100%" align={"center"} justify={"center"}>
       <>
@@ -43,7 +41,7 @@ export default function AdminAccordion({user}:{user:any}) {
               <ChevronDownIcon fontSize="24px" />
             </AccordionButton>
             <AccordionPanel py={4}>
-              <VStack spacing='1'>
+              <VStack spacing='2'>
                 <ListComp title="Phone" value={`${user?.phone}`} />
                 <ListComp title="Faculty" value={`${user?.faculty?.name}`} />
                 <ListComp title="Department" value={`${user?.department?.name}`}/>

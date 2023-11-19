@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 // import usePageResponsive from '../../hooks/usePageResponsive';
 import { useRouter } from "next/router";
 import SidebarWithHeader from "lib/components/DashMenu";
+import AdminNav from 'lib/components/AdminComp/AdminNav';
 type LayoutProps = {
   children: ReactNode;
 };
@@ -13,8 +14,13 @@ type LayoutProps = {
 const MobileLayout = ({ children }: { children: ReactNode }) => {
   const route = useRouter();
 
+
+  if(route.pathname?.includes("admin")){
+// if()
+    return <AdminNav>{children}</AdminNav>
+  }
   if (route.pathname == "/" || route.pathname?.includes("signup") || route.pathname == "/forgot-password" 
-  ||route.pathname?.includes("admin")
+  
   ) {
     return <Box as="main">{children}</Box>;
   }
@@ -31,6 +37,11 @@ const MobileLayout = ({ children }: { children: ReactNode }) => {
 };
 
 const DesktopLayout = ({ children }: { children: ReactNode }) => {
+  const route = useRouter();
+  if(route.pathname?.includes("admin")){
+    // if()
+        return <AdminNav>{children}</AdminNav>
+      }
   return (
 
     <Box margin="0 auto" w="100%" transition="0.5s ease-out">

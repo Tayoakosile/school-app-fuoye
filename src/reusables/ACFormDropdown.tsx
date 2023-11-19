@@ -26,6 +26,7 @@ type ACFormDropdownProp = {
     placeholder?: string;
     value?: any;
     onOptionChange?:any
+    errorLabel?:string
     getOptionLabel?:string
 }
 
@@ -33,7 +34,7 @@ const ACFormDropdown = ({
     options,
     getOptionLabel='label',
     label,
-    control,
+    control,errorLabel,
     name,
     isLoading,
     helperText,onOptionChange,
@@ -68,6 +69,7 @@ const ACFormDropdown = ({
                     }}
                 >
                     <FormLabel fontSize="lg">{label}</FormLabel>
+                    
 
                     <Box as={Select}
                         placeholder={placeholder}
@@ -91,7 +93,9 @@ const ACFormDropdown = ({
                             onOptionChange && onOptionChange(option)
                             
                             }} />
-                    <FormErrorMessage>{error?.message}</FormErrorMessage>
+                    <FormErrorMessage>{errorLabel ? 
+                    // @ts-ignore
+                    error?.label?.message : error?.message}</FormErrorMessage>
                     <FormHelperText>{helperText}</FormHelperText>
                 </FormControl>
 
