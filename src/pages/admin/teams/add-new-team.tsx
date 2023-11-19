@@ -10,6 +10,7 @@ import {
   FormLabel,
   Collapse,
   Box,
+  Heading,
 } from "@chakra-ui/react";
 import useAdminGetTeams from "hooks/admin/useAdminGetTeams";
 import randomatic from "randomatic";
@@ -30,7 +31,11 @@ const AddNewTeam = () => {
   } = useAdminGetTeams();
 
   const handleClick = () => {
-    setValue("password", randomatic("A0", 8), {
+    const value = randomatic("a0", 8);
+    setValue("password", value, {
+      shouldValidate: true,
+    });
+    setValue("confirm_password", value, {
       shouldValidate: true,
     });
   };
@@ -53,79 +58,107 @@ const AddNewTeam = () => {
   const onSubmit = handleSubmit((data) =>
     router.push("/admin/teams/team-succesfull")
   );
+
   return (
-    <form onSubmit={onSubmit}>
-      <SimpleGrid columns={{ base: 1, lg: 2 }} spacingX={8} pb="8" spacingY={6}>
-        <ACFormInput label="Full Name" name="full_name" control={control} />
-        <ACFormInput label="Username" name="username" control={control} />
-        <ACFormInput
-          label="Email Address"
-          helperText="Enter new team email address,(Generated Credentials will be sent to team's mail )"
-          name="email"
-          control={control}
-        />
-        <ACFormDropdown
-          options={options}
-          errorLabel="role"
-          label="Role"
-          name="role"
-          control={control}
-        />
-
-        <Collapse in={!is_district_leader}>
-          <ACFormInput label="Position" name="position" control={control} />
-        </Collapse>
-
-        <motion.div
-          animate={{
-            opacity: is_district_leader ? 1 : 0,
-            scale: is_district_leader ? 1 : 0.4,
-            transitionEnd: { display: is_district_leader ? "block" : "none" },
-          }}
+    
+    <Box px={{ base: "2", lg: "10" }}>
+        
+      <Heading pt="2" pb="6">
+        Add new Team Member
+      </Heading>
+     
+      <form onSubmit={onSubmit}>
+        <SimpleGrid
+          columns={{ base: 1, lg: 2 }}
+          spacingX={8}
+          pb="8"
+          spacingY={6}
         >
-          <ACFormDropdown
-            // options={options}
-            options={all_faculties_and_department?.faculties}
-            getOptionLabel="name"
-            label="District Leader for What Faculty?"
-            name="faculty"
+          <ACFormInput label="Full Name" name="full_name" control={control} />
+          <ACFormInput
+            label="Username"
+            name="username"
+            control={control}
+            helperText="This username above will be the user login credentials"
+          />
+          <ACFormInput
+            label="Email Address"
+            helperText="Enter new team email address,(Generated Credentials will be sent to team's mail )"
+            name="email"
             control={control}
           />
-        </motion.div>
+          <ACFormDropdown
+            options={options}
+            errorLabel="role"
+            label="Role"
+            name="role"
+            control={control}
+          />
 
-        <Controller
-          control={control}
-          name={"password"}
-          render={({
-            field: { value, onChange, onBlur },
-            fieldState: { invalid, error },
-          }) => (
-            <FormControl isInvalid={invalid}>
-              <FormLabel color="gray.700" fontSize={{ base: "lg", lg: "xl" }}>
-                Password
-              </FormLabel>
-              <InputGroup size="lg">
-                <Input
-                  pr="4.5rem"
-                  type={"text"}
-                  placeholder="Enter password"
-                  onChange={onChange}
-                  onBlur={onBlur}
-                  value={value}
-                />
-                <InputRightElement width="fit">
-                  <Button h="full" size="xs" onClick={handleClick}>
-                    Autogenerate
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-              {invalid && <FormErrorMessage>{error?.message}</FormErrorMessage>}
-            </FormControl>
-          )}
-        />
-      </SimpleGrid>
-      <AcButton type="submit">Add New Team Member</AcButton>
-    </form>
+          <Collapse in={!is_district_leader}>
+            <ACFormInput label="Position" name="position" control={control} />
+          </Collapse>
+
+          <motion.div
+            animate={{
+              opacity: is_district_leader ? 1 : 0,
+              scale: is_district_leader ? 1 : 0.4,
+              transitionEnd: { display: is_district_leader ? "block" : "none" },
+            }}
+          >
+            <ACFormDropdown
+              // options={options}
+              options={all_faculties_and_department?.faculties}
+              getOptionLabel="name"
+              label="District Leader for What Faculty?"
+              name="faculty"
+              control={control}
+            />
+          </motion.div>
+
+          <Controller
+            control={control}
+            name={"password"}
+            render={({
+              field: { value, onChange, onBlur },
+              fieldState: { invalid, error },
+            }) => (
+              <FormControl isInvalid={invalid}>
+                <FormLabel color="gray.700" fontSize={{ base: "lg", lg: "xl" }}>
+                  Password
+                </FormLabel>
+                <InputGroup size="lg">
+                  <Input
+                    pr="4.5rem"
+                    type={"text"}
+                    placeholder="Enter password"
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    value={value}
+                  />
+                  <InputRightElement width="fit">
+                    <Button h="full" size="xs" onClick={handleClick}>
+                      Autogenerate
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+                {invalid && (
+                  <FormErrorMessage>{error?.message}</FormErrorMessage>
+                )}
+              </FormControl>
+            )}
+          />
+          <ACFormInput
+            label="Confirm Password"
+            name="confirm_password"
+            control={control}
+          />
+        </SimpleGrid>
+        <AcButton type="submit">Add New Team Member</AcButton>
+      </form>
+
+    </Box>
+
   );
 };
 
